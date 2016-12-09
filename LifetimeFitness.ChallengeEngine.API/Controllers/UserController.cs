@@ -35,27 +35,6 @@ namespace LifetimeFitness.ChallengeEngine.API.Controllers
             }
         }
 
-        //public HttpResponseMessage LoginUser(string userName, string password)
-        //{
-        //    try
-        //    {
-
-        //        var entity = _userProvider.Login(userName, password);
-        //        if (entity != null)
-        //        {
-        //            return Request.CreateResponse(HttpStatusCode.OK, entity);
-        //        }
-        //        else
-        //        {
-        //            return Request.CreateErrorResponse(HttpStatusCode.NotFound, "User not found");
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
-        //    }
-        //}
-
         [Route("SearchUser")]
         public async Task<HttpResponseMessage> SearchUser(string userName)
         {
