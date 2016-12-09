@@ -19,19 +19,19 @@ namespace LifetimeFitness.ChallengeEngine.Business
             measurementProviderRepository = unitOfWork.Repository<Measurement>();
         }
 
-        public void Insert(Measurement _measurement)
+        public int Insert(Measurement _measurement)
         {
-            measurementProviderRepository.Insert(_measurement);
+          return  measurementProviderRepository.Insert(_measurement);
         }
 
-        public void Update(Measurement _measurement)
+        public int Update(Measurement _measurement)
         {
-            measurementProviderRepository.Update(_measurement);
+          return  measurementProviderRepository.Update(_measurement);
         }
 
-        public void Delete(Measurement _measurement)
+        public int Delete(Measurement _measurement)
         {
-            measurementProviderRepository.Delete(_measurement);
+          return  measurementProviderRepository.Delete(_measurement);
         }
 
 

@@ -20,19 +20,19 @@ namespace LifetimeFitness.ChallengeEngine.Business
 
 
 
-        public void Insert(ChallengeType _challengeType)
+        public int Insert(ChallengeType _challengeType)
         {
-            challengeTypeRepository.Insert(_challengeType);
+            return  challengeTypeRepository.Insert(_challengeType);
         }
 
-        public void Update(ChallengeType _challengeType)
+        public int Update(ChallengeType _challengeType)
         {
-            challengeTypeRepository.Update(_challengeType);
+            return challengeTypeRepository.Update(_challengeType);
         }
 
-        public void Delete(ChallengeType _challengeType)
+        public int Delete(ChallengeType _challengeType)
         {
-            challengeTypeRepository.Delete(_challengeType);
+            return challengeTypeRepository.Delete(_challengeType);
         }
 
         public async Task<ChallengeType> GetById(int _id)

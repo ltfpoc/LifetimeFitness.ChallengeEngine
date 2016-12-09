@@ -25,19 +25,19 @@ namespace LifetimeFitness.ChallengeEngine.Business
             return await userRoleProviderRepository.GetAll();
         }
 
-        public void Insert(UserRole _userRole)
+        public int Insert(UserRole _userRole)
         {
-            userRoleProviderRepository.Insert(_userRole);
+           return userRoleProviderRepository.Insert(_userRole);
         }
 
-        public void Update(UserRole _userRole)
+        public int Update(UserRole _userRole)
         {
-            userRoleProviderRepository.Update(_userRole);
+           return userRoleProviderRepository.Update(_userRole);
         }
 
-        public void Delete(UserRole _userRole)
+        public int Delete(UserRole _userRole)
         {
-            userRoleProviderRepository.Delete(_userRole);
+           return userRoleProviderRepository.Delete(_userRole);
         }
 
         public async Task<UserRole> GetById(int _id)

@@ -10,9 +10,12 @@ namespace LifetimeFitness.ChallengeEngine.DataAccess
     {
         Task<TEntity> GetById(int id);
         Task<ICollection<TEntity>> FindBy(Expression<Func<TEntity, bool>> predicate);
-        void Insert(TEntity entity);
-        void Update(TEntity entity);
-        void Delete(TEntity entity);
+        int Insert(TEntity entity);
+        int Update(TEntity entity);
+        int Delete(TEntity entity);
+        Task<int> InsertAsync(TEntity entity);
+        Task<int> UpdateAsync(TEntity entity);
+        Task<int> DeleteAsync(TEntity entity);
         Task<ICollection<TEntity>> GetAll();
         Task<ICollection<TEntity>> GetAllBy(Expression<Func<TEntity, bool>> filter = null, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null);
     }

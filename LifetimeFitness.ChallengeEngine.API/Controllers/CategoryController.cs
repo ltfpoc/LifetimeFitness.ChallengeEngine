@@ -1,4 +1,5 @@
 ﻿using LifetimeFitness.ChallengeEngine.Business;
+using LifetimeFitness.ChallengeEngine.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;

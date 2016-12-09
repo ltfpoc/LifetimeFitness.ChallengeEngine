@@ -19,8 +19,9 @@ namespace LifetimeFitness.ChallengeEngine.DataAccess
             this._entities = _context.Set<TEntity>();
         }
 
-        public void Insert(TEntity entity)
+        public int Insert(TEntity entity)
         {
+            int result = 0;
             try
             {
                 if (entity == null)
@@ -29,6 +30,7 @@ namespace LifetimeFitness.ChallengeEngine.DataAccess
                 }
                 this.Entities.Add(entity);
                 this._context.SaveChanges();
+                result = 1;
             }
             catch (DbEntityValidationException dbEx)
             {
@@ -46,10 +48,12 @@ namespace LifetimeFitness.ChallengeEngine.DataAccess
                 var fail = new Exception(msg, dbEx);
                 throw fail;
             }
+            return result;
         }
 
-        public void Update(TEntity entity)
+        public int Update(TEntity entity)
         {
+            int result = 0;
             try
             {
                 if (entity == null)
@@ -57,6 +61,7 @@ namespace LifetimeFitness.ChallengeEngine.DataAccess
                     throw new ArgumentNullException("entity");
                 }
                 this._context.SaveChanges();
+                result = 1;
             }
             catch (DbEntityValidationException dbEx)
             {
@@ -72,10 +77,12 @@ namespace LifetimeFitness.ChallengeEngine.DataAccess
                 var fail = new Exception(msg, dbEx);
                 throw fail;
             }
+            return result;
         }
 
-        public void Delete(TEntity entity)
+        public int Delete(TEntity entity)
         {
+            int result = 0;
             try
             {
                 if (entity == null)
@@ -84,6 +91,7 @@ namespace LifetimeFitness.ChallengeEngine.DataAccess
                 }
                 this.Entities.Remove(entity);
                 this._context.SaveChanges();
+                result = 1;
             }
             catch (DbEntityValidationException dbEx)
             {
@@ -100,6 +108,7 @@ namespace LifetimeFitness.ChallengeEngine.DataAccess
                 var fail = new Exception(msg, dbEx);
                 throw fail;
             }
+            return result;
         }
 
         public async Task<TEntity> GetById(int id)
@@ -128,6 +137,95 @@ namespace LifetimeFitness.ChallengeEngine.DataAccess
                 query = orderBy(query);
 
             return await query.ToListAsync();
+        }
+
+        public async Task<int> InsertAsync(TEntity entity)
+        {
+            int result = 0;
+            try
+            {
+                if (entity == null)
+                {
+                    throw new ArgumentNullException("entity");
+                }
+                this.Entities.Add(entity);
+                result = await _context.SaveChangesAsync();
+            }
+            catch (DbEntityValidationException dbEx)
+            {
+                var msg = string.Empty;
+
+                foreach (var validationErrors in dbEx.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        msg += string.Format("Property: {0} Error: {1}",
+                        validationError.PropertyName, validationError.ErrorMessage) + Environment.NewLine;
+                    }
+                }
+
+                var fail = new Exception(msg, dbEx);
+                throw fail;
+            }
+            return result;
+        }
+
+        public async Task<int> UpdateAsync(TEntity entity)
+        {
+            int result = 0;
+            try
+            {
+                if (entity == null)
+                {
+                    throw new ArgumentNullException("entity");
+                }
+                result = await _context.SaveChangesAsync();
+            }
+            catch (DbEntityValidationException dbEx)
+            {
+                var msg = string.Empty;
+                foreach (var validationErrors in dbEx.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        msg += Environment.NewLine + string.Format("Property: {0} Error: {1}",
+                        validationError.PropertyName, validationError.ErrorMessage);
+                    }
+                }
+                var fail = new Exception(msg, dbEx);
+                throw fail;
+            }
+            return result;
+        }
+
+        public async Task<int> DeleteAsync(TEntity entity)
+        {
+            int result = 0;
+            try
+            {
+                if (entity == null)
+                {
+                    throw new ArgumentNullException("entity");
+                }
+                this.Entities.Remove(entity);
+                result = await _context.SaveChangesAsync();
+            }
+            catch (DbEntityValidationException dbEx)
+            {
+                var msg = string.Empty;
+
+                foreach (var validationErrors in dbEx.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        msg += Environment.NewLine + string.Format("Property: {0} Error: {1}",
+                        validationError.PropertyName, validationError.ErrorMessage);
+                    }
+                }
+                var fail = new Exception(msg, dbEx);
+                throw fail;
+            }
+            return result;
         }
 
         private IDbSet<TEntity> Entities
