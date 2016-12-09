@@ -60,20 +60,12 @@ namespace LifetimeFitness.ChallengeEngine.Business
             var hashBytes = System.Security.Cryptography.MD5.Create().ComputeHash(bytes);
             return Convert.ToBase64String(hashBytes);
         }
-        //public async Task<User> Login(string userName, string password)
-        //{
-        //    string hashPassword = HashPassword(password);
-        //    var entity = await FindBy(u => u.UserName == userName && u.Password == hashPassword);
-        //    if (entity != null)
-        //    {
-                
-        //        return entity;
-        //    }
-        //    else
-        //    {
-        //        return null;
-        //    }
-        //}
+        public async Task<User> LoginUser(string userName, string password)
+        {
+            string hashPassword = HashPassword(password);
+            var entity = await FindBy(u => u.UserName == userName && u.Password == hashPassword);
+            return entity.FirstOrDefault();
+        }
 
 
     }
