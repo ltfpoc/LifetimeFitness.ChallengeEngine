@@ -14,27 +14,25 @@ using System.Web.Http.Hosting;
 namespace LifetimeFitness.ChallengeEngine.API.Tests.Controllers
 {
     [TestClass]
-    public class CategoryControllerTest
+    public class ClubControllerTest
     {
         [TestMethod]
-        public async Task GetAllCategory()
+        public async Task GetAllClub()
         {
             try
             {
-
-
                 // Arrange
-                CategoryController controller = new CategoryController();
+                ClubController controller = new ClubController();
                 controller.Request = new HttpRequestMessage();
                 controller.Request.Properties.Add(HttpPropertyKeys.HttpConfigurationKey, new HttpConfiguration());
                 // Act
-                ChallengeTypeProvider _ChallengeTypeProvider = new ChallengeTypeProvider();
-                var testProducts = await _ChallengeTypeProvider.GetAll() as List<ChallengeType>;
+                ClubProvider _ClubProvider = new ClubProvider();
+                var testProducts = await _ClubProvider.GetAll() as List<Club>;
                 int testproduct = testProducts.Count;
                 // Act
-                var response = await controller.GetCategory() as HttpResponseMessage;
+                var response = await controller.GetClub() as HttpResponseMessage;
                 ObjectContent objContent = response.Content as ObjectContent;
-                List<ChallengeType> picklistItem = objContent.Value as List<ChallengeType>;
+                List<Club> picklistItem = objContent.Value as List<Club>;
                 int icount = picklistItem.Count;
                 // Assert
                 Assert.IsNotNull(response);
@@ -48,28 +46,24 @@ namespace LifetimeFitness.ChallengeEngine.API.Tests.Controllers
         }
 
         [TestMethod]
-        public async Task GetCategoryById()
+        public async Task GetClubById()
         {
             try
             {
-
-
                 // Arrange
-                CategoryController controller = new CategoryController();
+                ClubController controller = new ClubController();
                 controller.Request = new HttpRequestMessage();
                 controller.Request.Properties.Add(HttpPropertyKeys.HttpConfigurationKey, new HttpConfiguration());
                 // Act
-                ChallengeTypeProvider _ChallengeTypeProvider = new ChallengeTypeProvider();
-                var testProducts = await _ChallengeTypeProvider.GetById(1) as ChallengeType;
-                string testproduct = testProducts.ChallengeTypeTitle;
+                ClubProvider _ClubProvider = new ClubProvider();
+                var testClub = await _ClubProvider.GetById(1) as Club;
                 // Act
-                var response = await controller.GetCategoryById(1) as HttpResponseMessage;
+                var response = await controller.GetClub(1) as HttpResponseMessage;
                 ObjectContent objContent = response.Content as ObjectContent;
-                ChallengeType picklistItem = objContent.Value as ChallengeType;
-                string icount = picklistItem.ChallengeTypeTitle;
+                var pickClub = objContent.Value as Club;
                 // Assert
                 Assert.IsNotNull(response);
-                Assert.AreEqual(testproduct, icount);
+                Assert.AreEqual(testClub, pickClub);
             }
             catch (Exception ex)
             {
