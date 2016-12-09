@@ -18,21 +18,21 @@ namespace LifetimeFitness.ChallengeEngine.Business
             challengeClubRelationRepository = unitOfWork.Repository<ChallengeClubRelation>();
         }
 
-        
 
-        public void Insert(ChallengeClubRelation _challengeClubRelation)
+
+        public int Insert(ChallengeClubRelation _challengeClubRelation)
         {
-            challengeClubRelationRepository.Insert(_challengeClubRelation);
+            return challengeClubRelationRepository.Insert(_challengeClubRelation);
         }
 
-        public void Update(ChallengeClubRelation _challengeClubRelation)
+        public int Update(ChallengeClubRelation _challengeClubRelation)
         {
-            challengeClubRelationRepository.Update(_challengeClubRelation);
+            return challengeClubRelationRepository.Update(_challengeClubRelation);
         }
 
-        public void Delete(ChallengeClubRelation _challengeClubRelation)
+        public int Delete(ChallengeClubRelation _challengeClubRelation)
         {
-            challengeClubRelationRepository.Delete(_challengeClubRelation);
+            return challengeClubRelationRepository.Delete(_challengeClubRelation);
         }
 
         public async Task<IEnumerable<ChallengeClubRelation>> GetAll()

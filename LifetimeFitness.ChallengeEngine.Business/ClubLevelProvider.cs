@@ -21,19 +21,19 @@ namespace LifetimeFitness.ChallengeEngine.Business
 
        
 
-        public void Insert(ClubLevel _clubLevel)
+        public int Insert(ClubLevel _clubLevel)
         {
-            clubLevelProviderRepository.Insert(_clubLevel);
+          return  clubLevelProviderRepository.Insert(_clubLevel);
         }
 
-        public void Update(ClubLevel _clubLevel)
+        public int Update(ClubLevel _clubLevel)
         {
-            clubLevelProviderRepository.Update(_clubLevel);
+          return  clubLevelProviderRepository.Update(_clubLevel);
         }
 
-        public void Delete(ClubLevel _clubLevel)
+        public int Delete(ClubLevel _clubLevel)
         {
-            clubLevelProviderRepository.Delete(_clubLevel);
+          return  clubLevelProviderRepository.Delete(_clubLevel);
         }
 
         public async Task<ClubLevel> GetById(int _id)

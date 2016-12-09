@@ -18,19 +18,19 @@ namespace LifetimeFitness.ChallengeEngine.Business
         {
             userChallengeEnrollmentProviderRepository = unitOfWork.Repository<UserChallengeEnrollment>();
         }
-        public void Insert(UserChallengeEnrollment _userChallengeEnrollment)
+        public int Insert(UserChallengeEnrollment _userChallengeEnrollment)
         {
-            userChallengeEnrollmentProviderRepository.Insert(_userChallengeEnrollment);
+           return userChallengeEnrollmentProviderRepository.Insert(_userChallengeEnrollment);
         }
 
-        public void Update(UserChallengeEnrollment _userChallengeEnrollment)
+        public int Update(UserChallengeEnrollment _userChallengeEnrollment)
         {
-            userChallengeEnrollmentProviderRepository.Update(_userChallengeEnrollment);
+          return  userChallengeEnrollmentProviderRepository.Update(_userChallengeEnrollment);
         }
 
-        public void Delete(UserChallengeEnrollment _userChallengeEnrollment)
+        public int Delete(UserChallengeEnrollment _userChallengeEnrollment)
         {
-            userChallengeEnrollmentProviderRepository.Delete(_userChallengeEnrollment);
+           return userChallengeEnrollmentProviderRepository.Delete(_userChallengeEnrollment);
         }
 
 

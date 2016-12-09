@@ -18,19 +18,19 @@ namespace LifetimeFitness.ChallengeEngine.Business
             challengeRepository = unitOfWork.Repository<Challenge>();
         }
 
-        public void Insert(Challenge _Challenge)
+        public int Insert(Challenge _Challenge)
         {
-            challengeRepository.Insert(_Challenge);
+           return  challengeRepository.Insert(_Challenge);
         }
 
-        public void Update(Challenge _Challenge)
+        public int Update(Challenge _Challenge)
         {
-            challengeRepository.Update(_Challenge);
+            return challengeRepository.Update(_Challenge);
         }
 
-        public void Delete(Challenge _Challenge)
+        public int Delete(Challenge _Challenge)
         {
-            challengeRepository.Delete(_Challenge);
+            return challengeRepository.Delete(_Challenge);
         }
 
         public async Task<Challenge> GetById(int _id)

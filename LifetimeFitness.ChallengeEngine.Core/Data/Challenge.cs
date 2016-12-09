@@ -34,7 +34,6 @@ namespace LifetimeFitness.ChallengeEngine.Core
 
         public virtual ICollection<ChallengeClubRelation> ChallengeClubRelations { get; set; }
 
-        [ForeignKey("ChallengeTypeId")]
         public virtual ChallengeType ChallengeType { get; set; }
 
         public virtual ClubLevel ClubLevel { get; set; }
