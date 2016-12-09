@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifetimeFitness.ChallengeEngine.API", "LifetimeFitness.ChallengeEngine.API\LifetimeFitness.ChallengeEngine.API.csproj", "{875D699F-AD69-4B6B-A413-4DA55ACD2E14}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifetimeFitness.ChallengeEngine.API.Tests", "LifetimeFitness.ChallengeEngine.API.Tests\LifetimeFitness.ChallengeEngine.API.Tests.csproj", "{F3C50390-3750-4B14-AA30-E7326DA29BB4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifetimeFitness.ChallengeEngine.Business", "LifetimeFitness.ChallengeEngine.Business\LifetimeFitness.ChallengeEngine.Business.csproj", "{0088A00A-9254-47F4-8826-AB19E2EF3801}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifetimeFitness.ChallengeEngine.DataAccess", "LifetimeFitness.ChallengeEngine.DataAccess\LifetimeFitness.ChallengeEngine.DataAccess.csproj", "{C4EFDCE2-EFBD-4D56-BA5B-1BEF97B082FF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifetimeFitness.ChallengeEngine.Core", "LifetimeFitness.ChallengeEngine.Core\LifetimeFitness.ChallengeEngine.Core.csproj", "{0D495C06-7369-414D-B8AB-C0A68009FD15}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{875D699F-AD69-4B6B-A413-4DA55ACD2E14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{875D699F-AD69-4B6B-A413-4DA55ACD2E14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{875D699F-AD69-4B6B-A413-4DA55ACD2E14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{875D699F-AD69-4B6B-A413-4DA55ACD2E14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3C50390-3750-4B14-AA30-E7326DA29BB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3C50390-3750-4B14-AA30-E7326DA29BB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3C50390-3750-4B14-AA30-E7326DA29BB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3C50390-3750-4B14-AA30-E7326DA29BB4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0088A00A-9254-47F4-8826-AB19E2EF3801}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0088A00A-9254-47F4-8826-AB19E2EF3801}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0088A00A-9254-47F4-8826-AB19E2EF3801}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0088A00A-9254-47F4-8826-AB19E2EF3801}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4EFDCE2-EFBD-4D56-BA5B-1BEF97B082FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4EFDCE2-EFBD-4D56-BA5B-1BEF97B082FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4EFDCE2-EFBD-4D56-BA5B-1BEF97B082FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4EFDCE2-EFBD-4D56-BA5B-1BEF97B082FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D495C06-7369-414D-B8AB-C0A68009FD15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D495C06-7369-414D-B8AB-C0A68009FD15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D495C06-7369-414D-B8AB-C0A68009FD15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D495C06-7369-414D-B8AB-C0A68009FD15}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
