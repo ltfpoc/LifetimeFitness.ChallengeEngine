@@ -27,3 +27,28 @@ app.controller('LoginCtrl', function ($scope, $http) {
 
 
 });
+
+
+app.controller('ClubCtrl', function ($scope, $http) {
+    $scope.clubslist = [];
+    $http({
+        method: 'GET',
+        url: 'http://localhost:56507/api/Club/GetClub'
+    }).success(function (result) {
+        console.log(result);
+        $scope.clubslist = result;
+    });
+});
+
+    //$http.get("http://localhost:56507/api/Club/GetClub").success(function (response) {
+    //    var clubs = response.data;
+
+    //    //$.map(data, function (clubs) {
+    //    //    arrclubs.push(clubs.ClubName + "," + clubs.City);
+    //    //});
+    //    $scope.clubslist = arrclubs;
+    //}).error(function (status) {
+    //    alert(status);
+    //});
+
+    //});

@@ -9,6 +9,7 @@ namespace LifetimeFitness.ChallengeEngine.DataAccess
             : base("name=LifetimeFitnessDBContext")
         {
             this.Configuration.LazyLoadingEnabled = false;
+            this.Database.Log = s => System.Diagnostics.Debug.WriteLine(s);
         }
 
         public virtual DbSet<ChallengeClubRelation> ChallengeClubRelations { get; set; }

@@ -51,7 +51,7 @@ namespace LifetimeFitness.ChallengeEngine.Business
             return await clubProviderRepository.FindBy(predicate);
         }
 
-        public async Task<IEnumerable<Club>> GetAllBy(Expression<Func<Club, bool>> filter = null, Func<IQueryable<Club>, IOrderedQueryable<Club>> orderBy = null)
+        public async Task<IEnumerable<Club>> GetAllBy(Expression<Func<Club, bool>> filter = null, Func<IEnumerable<Club>, IOrderedEnumerable<Club>> orderBy = null)
         {
             return await clubProviderRepository.GetAllBy(filter, orderBy);
         }
