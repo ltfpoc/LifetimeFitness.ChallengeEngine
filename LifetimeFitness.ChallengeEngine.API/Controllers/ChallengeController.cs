@@ -35,7 +35,7 @@ namespace LifetimeFitness.ChallengeEngine.API.Controllers
             }
         }
 
-        [Route("GetChallenges")]
+        [Route("GetChallenges/{id}")]
         // GET: api/Challenge/5
         public async Task<HttpResponseMessage> GetChallenges(int id)
         {

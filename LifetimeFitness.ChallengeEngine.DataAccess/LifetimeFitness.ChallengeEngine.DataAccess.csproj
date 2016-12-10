@@ -52,6 +52,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IRepository.cs" />
+    <Compile Include="Migrations\201612100602115_AddClubNameandCity.cs" />
+    <Compile Include="Migrations\201612100602115_AddClubNameandCity.Designer.cs">
+      <DependentUpon>201612100602115_AddClubNameandCity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="UnitOfWork.cs" />
     <Compile Include="LifetimeFitnessDBContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -68,6 +73,11 @@
       <Project>{0d495c06-7369-414d-b8ab-c0a68009fd15}</Project>
       <Name>LifetimeFitness.ChallengeEngine.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201612100602115_AddClubNameandCity.resx">
+      <DependentUpon>201612100602115_AddClubNameandCity.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

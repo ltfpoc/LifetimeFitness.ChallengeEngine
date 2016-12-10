@@ -67,6 +67,13 @@ namespace LifetimeFitness.ChallengeEngine.Business
             return entity.FirstOrDefault();
         }
 
+        public int RegisterUser(User usertoregister)
+        {
+            usertoregister.Password = HashPassword(usertoregister.Password);
+            var result = Insert(usertoregister);
+            return result;
+        }
+
 
     }
 }

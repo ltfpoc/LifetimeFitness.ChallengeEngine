@@ -17,7 +17,7 @@ namespace LifetimeFitness.ChallengeEngine.Core
 
         [Required]
         [StringLength(50)]
-        public string Name { get; set; }
+        public string ClubName { get; set; }
 
         [Required]
         [StringLength(50)]
@@ -25,6 +25,10 @@ namespace LifetimeFitness.ChallengeEngine.Core
 
         [StringLength(50)]
         public string Address2 { get; set; }
+
+        [Required]
+        [StringLength(50)]
+        public string City { get; set; }
 
         [Required]
         [StringLength(2)]
