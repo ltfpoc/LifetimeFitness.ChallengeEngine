@@ -1,92 +1,82 @@
 ﻿<!DOCTYPE html>
-<html lang="en" ng-app="ltfApp">
+<html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <title>LTE</title>
-  <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css"> 
+    <meta charset="UTF-8">
+    <title>LTE</title>
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
 
-  <link rel="stylesheet" href="css/styles.min.css">
-  <script src="Scripts/angular.min.js"></script>
-  <script src="js/MainLifetimeFitness.js"></script>
-  
+    <link rel="stylesheet" href="css/styles.min.css">
+    <script src="Scripts/angular.min.js"></script>
+    <script src="js/MainLifetimeFitness.js"></script>
+
 
 
 </head>
 
-<body class="full" ng-controller="LoginCtrl">
+<body class="full" ng-app="ltfApp">
 
-   <!-- login start -->
-   <div class="container" id="login">
-        <div class="card card-container">          
-           <div class="col-xs-12 top-bar">
-             <img id="profile-img" class="profile-img-card" src="images/Logo_inner.svg" />
-           </div> 
-            
-            <form class="form-signin">               
-                            <div class="form-group">
-                               <label for="exampleInputEmail1">Username</label>
-                               <input type="text" id="inputEmail" class="form-control" placeholder="" required autofocus>
-                               </div>
+    <!-- login start -->
+    <div ng-controller="LoginCtrl" class="container" id="login">
+        <div class="card card-container">
+            <div class="col-xs-12 top-bar">
+                <img id="profile-img" class="profile-img-card" src="images/Logo_inner.svg" />
+            </div>
+
+            <form class="form-signin">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Username</label>
+                    <input type="text" id="inputEmail" class="form-control" placeholder="" required autofocus>
+                </div>
 
                 <div class="form-group padTop15px">
-                               <label for="exampleInputEmail1">Password</label>
-                               <input type="password" id="inputPassword" class="form-control" placeholder="Enter Password here.." required>
-                               </div>
-                
+                    <label for="exampleInputEmail1">Password</label>
+                    <input type="password" id="inputPassword" class="form-control" placeholder="Enter Password here.." required>
+                </div>
+
                 <div id="remember" class="checkbox clearfix">
                     <label class="col-xs-5">
                         <input type="checkbox" value="remember-me"> Remember me
                     </label>
 
                     <a href="#" class="forgot-password col-xs-7 text-right">
-                       Forgot password?
+                        Forgot password?
                     </a>
                 </div>
-                 <div class="col-xs-12 text-right pad-NoRight">
-                <button class="btn btn-primary btn-block btn-signin marTop20px loginBtn" type="submit">Login</button>
-                 </div>
+                <div class="col-xs-12 text-right pad-NoRight">
+                    <button class="btn btn-primary btn-block btn-signin marTop20px loginBtn" type="submit">Login</button>
+                </div>
             </form>
-            
+
         </div>
     </div> <!-- /container -->
- <!-- login Ends -->
+    <!-- login Ends -->
+    <!-- Choose_club start -->
+    <div ng-controller="ClubCtrl" class="container" id="Choose_club" style="display:none">
+        <div class="card card-container">
 
 
- <!-- Choose_club start -->
-    <div class="container" id="Choose_club" style="display:none"> 
-        <div class="card card-container">          
-          
-            
-            <form class="form-signin">               
-                            <div class="form-group"> 
-                               <h4 for="exampleInputEmail1" class="colorgrey padbottom15px">Choose Your Club</h4>
-                              <select class="form-control">
-  <option>Life Time Fitness (California - Roseville)</option>
-  <option>Life Time Fitness (New jersey)</option>
-</select>
-                               </div>
-               
-                 <div class="col-xs-12 text-right pad-NoRight">
-                   
-                <button class="btn btn-primary btn-block btn-signin marTop20px" type="submit">Continue <span class="arrow-right pad-left10px"> <img src="images/arrow-right.png"></span> </button>
-                 </div>
+            <form class="form-signin">
+                <div class="form-group">
+                    <h4 for="exampleInputEmail1" class="colorgrey padbottom15px">Choose Your Club</h4>
+                    <select ng-model="Selected" ng-options="club.ClubId as ('Life Time Fitness (' + (club.City+ ' - '+club.State+ ')') ) for club in clubslist" class="form-control">
+                    </select>
+                </div>
+
+                <div class="col-xs-12 text-right pad-NoRight">
+
+                    <button class="btn btn-primary btn-block btn-signin marTop20px" type="submit">Continue <span class="arrow-right pad-left10px"> <img src="images/arrow-right.png"></span> </button>
+                </div>
             </form><!-- /form -->
-            
+
         </div><!-- /card-container -->
     </div><!-- /container -->
-     <!-- Choose_club ends -->
+    <!-- Choose_club ends -->
+    <script src="lib/jquery/dist/jquery.min.js"></script>
+
+    <script src="js/main.min.js"></script>
 
 
-
-
-
-
-<script src="lib/jquery/dist/jquery.min.js"></script>
-
-  <script src="js/main.min.js"></script>
-
-   
 </body>
 
 </html>

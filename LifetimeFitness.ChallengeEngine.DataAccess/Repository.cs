@@ -126,15 +126,15 @@ namespace LifetimeFitness.ChallengeEngine.DataAccess
             return await _context.Set<TEntity>().ToListAsync();
         }
 
-        public async Task<ICollection<TEntity>> GetAllBy(Expression<Func<TEntity, bool>> filter = null, Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null)
+        public async Task<ICollection<TEntity>> GetAllBy(Expression<Func<TEntity, bool>> filter = null, Func<IEnumerable<TEntity>, IOrderedEnumerable<TEntity>> orderBy = null)
         {
             IQueryable<TEntity> query = _entities;
 
             if (filter != null)
                 query = query.Where(filter);
 
-            if (orderBy != null)
-                query = orderBy(query);
+            //if (orderBy != null)
+            //    query = orderBy(query);
 
             return await query.ToListAsync();
         }

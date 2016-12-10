@@ -51,7 +51,7 @@ namespace LifetimeFitness.ChallengeEngine.Business
         }
 
         public async Task<IEnumerable<UserRole>> GetAllBy(Expression<Func<UserRole, bool>> filter = null,
-            Func<IQueryable<UserRole>, IOrderedQueryable<UserRole>> orderBy = null)
+            Func<IEnumerable<UserRole>, IOrderedEnumerable<UserRole>> orderBy = null)
         {
             return await userRoleProviderRepository.GetAllBy(filter, orderBy);
         }

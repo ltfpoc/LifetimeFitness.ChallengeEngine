@@ -49,7 +49,7 @@ namespace LifetimeFitness.ChallengeEngine.Business
         }
 
         public async Task<IEnumerable<UserChallengeEnrollment>> GetAllBy(Expression<Func<UserChallengeEnrollment, bool>> filter = null,
-            Func<IQueryable<UserChallengeEnrollment>, IOrderedQueryable<UserChallengeEnrollment>> orderBy = null)
+            Func<IEnumerable<UserChallengeEnrollment>, IOrderedEnumerable<UserChallengeEnrollment>> orderBy = null)
         {
             return await userChallengeEnrollmentProviderRepository.GetAllBy(filter, orderBy);
         }

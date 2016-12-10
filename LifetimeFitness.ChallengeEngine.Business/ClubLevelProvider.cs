@@ -52,7 +52,7 @@ namespace LifetimeFitness.ChallengeEngine.Business
         }
 
         public async Task<IEnumerable<ClubLevel>> GetAllBy(Expression<Func<ClubLevel, bool>> filter = null, 
-            Func<IQueryable<ClubLevel>, IOrderedQueryable<ClubLevel>> orderBy = null)
+            Func<IEnumerable<ClubLevel>, IOrderedEnumerable<ClubLevel>> orderBy = null)
         {
             return await clubLevelProviderRepository.GetAllBy(filter, orderBy);
         }
