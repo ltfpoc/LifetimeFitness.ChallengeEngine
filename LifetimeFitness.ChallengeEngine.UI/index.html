@@ -59,7 +59,7 @@
             <form class="form-signin">
                 <div class="form-group">
                     <h4 for="exampleInputEmail1" class="colorgrey padbottom15px">Choose Your Club</h4>
-                    <select ng-model="Selected" ng-options="club.ClubId as ('Life Time Fitness (' + (club.City+ ' - '+club.State+ ')') ) for club in clubslist" class="form-control">
+                    <select ng-model="myClub" ng-options="club.ClubId as ('Life Time Fitness (' + (club.City+ ' - '+club.State+ ')') ) for club in clubslist track by club.ClubId" class="form-control">
                     </select>
                 </div>
 

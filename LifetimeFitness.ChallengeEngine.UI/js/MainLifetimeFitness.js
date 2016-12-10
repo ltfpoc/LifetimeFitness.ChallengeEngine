@@ -27,8 +27,6 @@ app.controller('LoginCtrl', function ($scope, $http) {
 
 
 });
-
-
 app.controller('ClubCtrl', function ($scope, $http) {
     $scope.clubslist = [];
     $http({
@@ -39,6 +37,30 @@ app.controller('ClubCtrl', function ($scope, $http) {
         $scope.clubslist = result;
     });
 });
+
+
+app.controller('CategoryCtrl', function ($scope, $http) {
+    $scope.clubslist = [];
+    $http({
+        method: 'GET',
+        url: 'http://localhost:56507/api/Category/GetCategory'
+    }).success(function (result) {
+        console.log(result);
+        $scope.clubslist = result;
+    });
+});
+
+app.controller('ChallengeCtrl', function ($scope, $http) {
+    $scope.clubslist = [];
+    $http({
+        method: 'GET',
+        url: 'http://localhost:56507/api/Challenge/GetChallenges'
+    }).success(function (result) {
+        console.log(result);
+        $scope.clubslist = result;
+    });
+});
+
 
     //$http.get("http://localhost:56507/api/Club/GetClub").success(function (response) {
     //    var clubs = response.data;
