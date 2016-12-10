@@ -7,7 +7,7 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
-using System.Web.Script.Serialization;
+
 
 namespace LifetimeFitness.ChallengeEngine.API.Controllers
 {
