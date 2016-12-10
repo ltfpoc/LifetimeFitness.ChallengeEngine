@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>LTE</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <!--<link href="lib/offcanvas/css/jasny-bootstrap.min.css" rel="stylesheet" media="screen">-->
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+   <link rel="stylesheet" href="css/styles.min.css">
+
+<!--<link rel="stylesheet" href="css/navmenu-reveal.css">-->
+  </head>
+  <body>
+    
+    <!--<div class="navmenu navmenu-default navmenu-fixed-left">
+      <a class="navmenu-brand" href="#">Project name</a>
+      <ul class="nav navmenu-nav">
+        <li><a href="../navmenu/">Slide in</a></li>
+        <li><a href="../navmenu-push/">Push</a></li>
+        <li class="active"><a href="./">Reveal</a></li>
+        <li><a href="../navbar-offcanvas/">Off canvas navbar</a></li>
+      </ul>
+      <ul class="nav navmenu-nav">
+        <li><a href="#">Link</a></li>
+        <li><a href="#">Link</a></li>
+        <li><a href="#">Link</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+          <ul class="dropdown-menu navmenu-nav">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li class="dropdown-header">Nav header</li>
+            <li><a href="#">Separated link</a></li>
+            <li><a href="#">One more separated link</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>-->
+
+    
+
+    <!--<div class="canvas">
+      <div class="navbar navbar-default navbar-fixed-top">
+        <button type="button" class="navbar-toggle" data-toggle="offcanvas" data-recalc="false" data-target=".navmenu" data-canvas=".canvas">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+
+      
+
+      <div class="container">
+     
+          
+
+        <div class="page-header">
+          <h1>Off Canvas Reveal Menu Template</h1>
+        </div>
+        <p class="lead">This example demonstrates the use of the offcanvas plugin with a reveal effect.</p>
+        <p>On the contrary of the push effect, the menu doesn't move with the canvas.</p>
+        <p>You get the reveal effect by wrapping the content in a div and setting the <code>canvas</code> option to target that div.</p>
+        <p>Note that in this example, the navmenu doesn't have the <code>offcanvas</code> class, but is placed under the canvas by setting the <code>z-index</code>.</p>
+        <p>Also take a look at the examples for a navmenu with <a href="../navmenu">slide in effect</a> and <a href="../navmenu-push">push effect</a>.</p>
+      </div>
+    </div>-->
+
+
+
+<nav class="navbar navbar-fixed-top navbar-inverse">
+
+    <button type="button" class="navbar-toggle navbar-default" >
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+     </button>
+
+
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        <div>
+         
+        </div>
+          <a class="navbar-brand" href="#"><img src="images/Logo_inner.svg" width="40%" class="img-responsive"></a>
+          <div class="divider"></div>
+        </div>
+
+        
+
+        <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
+          <ul class="nav navbar-nav">
+            <li class="dropdown">
+        <a class="dropdown-toggle dividerLeftbig" data-toggle="dropdown" href="#">Chanhassen - Minneapolis
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Page 1-1</a></li>
+          <li><a href="#">Page 1-2</a></li>
+          <li><a href="#">Page 1-3</a></li>
+        </ul>
+      </li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+              <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-user"></span> CJ
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Page 1-1</a></li>
+          <li><a href="#">Page 1-2</a></li>
+          <li><a href="#">Page 1-3</a></li>
+        </ul> 
+      </li>
+      <li><a href="#" class="dividerLeftsmall"><span class="glyphicon glyphicon-bell"></span> </a></li>
+      <li><a href="index.html"  class="dividerLeftsmall"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+    </ul>
+        </div><!-- /.nav-collapse -->
+
+        
+      </div><!-- /.container -->
+    </nav>
+
+
+    <div class="container-fluid">
+     <div class="row">
+  <div class="col-md-7 col-left-panel noPad">
+
+
+  <div class="">
+<form class="form-signin col-md-12 marTop40px clearfix noPad">               
+  <div class="form-group col-md-9 center-block"> 
+                               <h4 for="exampleInputEmail1" class="colorgrey padbottom15px  padLeft15px">Enroll for Challange</h4>
+                              
+                              <div class="col-md-5"><select class="form-control">
+                                <option>Select Category</option>
+                                <option>Category-1</option>
+                                </select></div>
+                                <div class="col-md-5"><select class="form-control">
+                                <option>Select Challange</option>
+                                <option>Category-1</option>
+                                </select></div>
+                                <div class="col-md-2">
+                                     <button class="btn btn-primary btn-block btn-signin" type="submit">Go</button>
+                                 </div>
+
+                                 
+    </div>
+
+    
+               
+                 
+            </form><!-- /form -->
+
+            <form class="form-signin col-md-12 clearfix noPad"> 
+                <hr class="clearfixhr " >              
+  <div class="form-group  col-md-9  center-block"> 
+                               <h4 for="exampleInputEmail1" class="colorgrey padbottom15px padLeft15px">Record Measurments</h4>
+                              
+                              <div class="col-md-10">
+                                  
+                                  <select class="form-control">
+                                <option>Select Members</option>
+                                <option>Members-1</option>
+                                </select></div>
+                                
+                                <div class="col-md-2">
+                                     <button class="btn btn-primary btn-block btn-signin" type="button" data-toggle="modal" data-target="#myModal">Go</button>
+                                 </div>
+
+                                 
+    </div>
+
+    
+               
+                 
+            </form><!-- /form -->
+
+
+            <form class="form-signin col-md-12 clearfix noPad"> 
+                <hr class="clearfixhr nomarbottom" >              
+  <div class="form-group  col-md-6 MembersCount border-right-grey text-center nomarbottom"> 
+                               
+   <h4 class="font-big">Members</h4> 
+     <div class="font-100px colorblue">   50     </div>                    
+    </div>
+<div class="form-group  col-md-6  text-center nomarbottom"> 
+      <h4>Challengers</h4>                          
+<div class="font-100px colorgreen">  08     </div>    
+                                 
+    </div>
+    
+               
+                 
+            </form><!-- /form -->
+
+
+
+            <div id="myCarousel" class="carousel slide clearfix" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+      <li data-target="#myCarousel" data-slide-to="3"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+      <div class="item active">
+        <img src="images/push-up.jpg" alt="Chania" width="100%" height="100%" class="img-responsive">
+      </div>
+
+      <div class="item">
+        <img src="images/push-up.jpg" alt="Chania" width="100%" height="100%" class="img-responsive">
+      </div>
+    
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+  </div>
+
+
+
+
+
+  </div>
+
+
+
+  <!--col-right-panel-->
+  <div class="col-md-5 col-right-panel">
+
+    <div class="container-fluid marTop40px ">
+        <h4 for="exampleInputEmail1" class="colorgrey padbottom15px">My Members</h4>
+  
+  <div class="row">
+    <div class="col-md-6 mymember_list">
+      <div class="col-md-12 mebProfile text-center">
+           <img src="images/JohnPeter_img.jpg" alt="..." class="img-circle" width="80">
+           <p>Ana Mathew</p>
+      </div>
+       <div class="col-md-12 detail noPad">
+         <div class="col-md-4 Age_col">
+            <div class="border-right text-center">
+            Age<br/>
+            <h4>33</h4>
+            </div>
+         </div>
+         <div class="col-md-5 Weight_col">
+             <div class="border-right text-center">
+            Weight<br/>
+            <h4>57</h4>
+</div>
+         </div>
+         <div class="col-md-3 BMI_col">
+    <div class="border-right text-center">
+            BMI<br/>
+            <h4>2.3</h4>
+            </div>
+         </div>
+       </div>
+         <div class="col-md-12 catgry text-center colorred">
+              Weight Loss
+         </div>
+      
+    </div>
+
+      <div class="col-md-6 mymember_list">
+      <div class="col-md-12 mebProfile text-center">
+           <img src="images/SarahJones_img.jpg" alt="..." class="img-circle" width="80">
+           <p>Sarah Jones</p>
+      </div>
+       <div class="col-md-12 detail noPad">
+         <div class="col-md-4 Age_col">
+            <div class="border-right text-center">
+            Age<br/>
+            <h4>33</h4>
+            </div>
+         </div>
+         <div class="col-md-5 Weight_col">
+             <div class="border-right text-center">
+            Weight<br/>
+            <h4>57</h4>
+</div>
+         </div>
+         <div class="col-md-3 BMI_col">
+    <div class="border-right text-center">
+            BMI<br/>
+            <h4>2.3</h4>
+            </div>
+         </div>
+       </div>
+         <div class="col-md-12 catgry text-center textblue">
+              Club Member
+         </div>
+      
+    </div>
+  </div>
+</div>
+
+
+<div class="container-fluid marTop40px ">
+<h4 for="exampleInputEmail1" class="colorgrey padbottom15px">Trending Workout Techniques</h4>
+
+
+<div class="trendingWrkout_list">
+    <ul class="list-inline">
+        <li class="text-left">
+<div class="container-fluid">
+          <div class="row">
+           <div class="col-md-12 noPad"> 
+               <a><img src="images/pushup-video.png" class="img-responsive"></a>
+               
+            </div>
+        <div class="col-md-12 bottombar"> 
+        <h6 class="col-md-7">Push Up's
+            <p>
+                 Nov 30, 2016
+               </p></h6>
+         <h6 class="col-md-5"><a class="share_icon marRight5px"> </a>  <a class="Favourite_icon"> </a></h6>
+        </div>
+          </div>
+</div>
+        </li>
+
+        <li class="text-left">
+<div class="container-fluid">
+          <div class="row">
+           <div class="col-md-12 noPad"> 
+               <a><img src="images/pushup-video2.png" class="img-responsive"></a>
+               
+            </div>
+        <div class="col-md-12 bottombar"> 
+        <h6 class="col-md-7">Push Up's
+            <p>
+                 Nov 30, 2016
+               </p></h6>
+         <h6 class="col-md-5"><a class="share_icon marRight5px"> </a>  <a class="Favourite_icon"> </a></h6>
+        </div>
+          </div>
+</div>
+        </li>
+        
+    </ul>
+</div>
+</div>
+
+
+
+<div class="container-fluid marTop40px ">
+<h4 for="exampleInputEmail1" class="colorgrey padbottom15px">Upcoming Challenges</h4>
+
+<div class="upcoming_list">
+    <ul class="list-inline">
+        <li class="text-center"><a><img src="images/weightloss.png" class="img-responsive"></a><h6>Weight Loss</h6></li>
+        <li class="text-center"><a><img src="images/climbing.png" class="img-responsive"></a><h6>Climbing Challenge</h6></li>
+        <li class="text-center"><a><img src="images/cycling.png" class="img-responsive"></a><h6>Cycling Challenge</h6></li>
+        <li class="text-center"><a><img src="images/bodytransforaming.png" class="img-responsive"></a><h6>Body Transformation</h6></li>
+    </ul>
+</div>
+
+
+</div>
+
+<div class="container-fluid marTop40px ">
+<h4 for="exampleInputEmail1" class="colorgrey padbottom15px">Live Fitness Posts</h4>
+
+<div class="liveFitness_lists">
+    <ul class="list-unstyled">
+        <li>
+<div class="container-fluid">
+          <div class="row">
+               <div class="col-md-3"><img src="images/AnaMathew_img.jpg" alt="..." class="img-circle img-responsive" width="80" ></div>
+               <div class="col-md-9">
+                   <p class="textblue">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam malesuada nunc sed sapien viverra tristique.</p>
+                   <p class="textgrey">Anna Methew | Yestarday</p>                   
+                    </div>
+
+
+          </div>
+</div>
+
+        </li>
+        <li>
+<div class="container-fluid">
+          <div class="row">
+               <div class="col-md-3"><img src="images/JohnPeter_img.jpg" alt="..." class="img-circle img-responsive" width="80"></div>
+               <div class="col-md-9">
+                   <p class="textblue">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam malesuada nunc sed sapien viverra tristique.</p>
+                   <p class="textgrey">Anna Methew | Yestarday</p>                   
+                    </div>
+
+
+          </div>
+</div>
+
+        </li>
+        <li>
+<div class="container-fluid">
+          <div class="row">
+               <div class="col-md-3"><img src="images/JohnMac_img.jpg" alt="..." class="img-circle img-responsive" width="80"></div>
+               <div class="col-md-9">
+                   <p class="textblue">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam malesuada nunc sed sapien viverra tristique.</p>
+                   <p class="textgrey">Anna Methew | Yestarday</p>                   
+                    </div>
+
+
+          </div>
+</div>
+
+        </li>
+    </ul>
+</div>
+
+
+</div>
+
+  </div>
+</div>
+    </div>
+
+
+
+
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      
+      <div class="modal-body clearfix noPad">
+
+          <div class="col-md-7 pad15px">
+
+<form class="clearfix">               
+  <div class="form-group"> 
+                               <h4 for="exampleInputEmail1" class="colorgrey padbottom15px  padLeft15px">Enroll for Challange</h4>
+                              
+                              <div class="col-md-6"><select class="form-control">
+                                <option>Select Category</option>
+                                <option>Category-1</option>
+                                </select></div>
+                                <div class="col-md-6"><select class="form-control">
+                                <option>Select Challange</option>
+                                <option>Category-1</option>
+                                </select></div>                                 
+    </div>    
+                 
+ </form><!-- /form -->
+
+<hr>
+ <div class="marTop20px clearfix col-md-12" >
+    <h4 for="exampleInputEmail1" class="colorgrey padbottom15px  ">Weight Loss 60-Days Challenge</h4>
+    <div class="">
+        <h5>Info</h5>
+         <p class="font12">
+             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam malesuada nunc sed sapien viverra tristique. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam malesuada nunc sed sapien viverra tristique.
+             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam malesuada nunc sed sapien viverra tristique.
+         </p>
+    </div>
+
+    <div class="">
+        <h5>Instructions, Guideliness</h5>
+         <ul class="font12">
+             <li> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam malesuada </li>
+             <li> consectetur adipiscing elit Lorem ipsum dolor sit amet.</li>
+             <li>adipiscing adipiscing dolor sit amet, consectetur adipiscing elit.</li>
+             <li>Lorem consectetur dolor sit amet, consectetur adipiscing elit.</li>
+         </ul>
+    </div>
+
+    <div class="">
+        <h5>Winning Amount</h5>
+         <h4>
+            $ 250
+         </h4>
+    </div>
+
+    <div class="">
+        <h5>Goals Achieved</h5>
+         <ul class="font12">
+             <li> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam malesuada </li>
+             <li> consectetur adipiscing elit Lorem ipsum dolor sit amet.</li>
+             <li>adipiscing adipiscing dolor sit amet, consectetur adipiscing elit.</li>
+             <li>Lorem consectetur dolor sit amet, consectetur adipiscing elit.</li>
+         </ul>
+    </div>
+      
+
+ </div>
+
+           
+
+          </div>
+
+           <div class="col-md-5 leftSection">
+<button type="button" class="close padTop15px" data-dismiss="modal">&times;</button>
+        
+
+        <form class="form-inline marTop40px searchPanel">
+  <div class="form-group ">
+    <div class="input-group">
+      <input type="text" class="form-control" id="searchtype" placeholder="Search">
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">+</button>
+</form>
+                        <ul class="list-unstyled search_user_list marTop40px">
+                            <li><img src="images/AnaMathew_img.jpg" alt="..." class="img-circle" width="50"><span>Ana Mathew</span></li>
+                           <li><img src="images/JohnPeter_img.jpg" alt="..." class="img-circle" width="50"><span>Daryl Ginn</span></li>
+                            <li><img src="images/JohnMac_img.jpg" alt="..." class="img-circle" width="50"><span>Sarah Jones</span></li>
+                            <li><img src="images/SarahJones_img.jpg" alt="..." class="img-circle" width="50"><span>Erik Henebratt</span></li>
+                            <li><img src="images/JohnMac_img.jpg" alt="..." class="img-circle" width="50"><span>John Mac</span></li>
+                            <li><img src="images/JohnPeter_img.jpg" alt="..." class="img-circle" width="50"><span>Aaron Sananes</span></li>
+                        </ul>
+              
+          </div>
+      
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="lib/jquery/dist/jquery.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!--<script src="lib/offcanvas/jasny-bootstrap.min.js"></script>-->
+    
+    <script src="js/main.min.js"></script>
+
+  </body>
+</html>
