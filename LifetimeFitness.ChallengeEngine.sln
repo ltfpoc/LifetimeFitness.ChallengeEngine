@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifetimeFitness.ChallengeEn
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifetimeFitness.ChallengeEngine.Core", "LifetimeFitness.ChallengeEngine.Core\LifetimeFitness.ChallengeEngine.Core.csproj", "{0D495C06-7369-414D-B8AB-C0A68009FD15}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifetimeFitness.ChallengeEngine.UI", "LifetimeFitness.ChallengeEngine.UI\LifetimeFitness.ChallengeEngine.UI.csproj", "{B9FCD60C-D45F-40D5-B98D-DCC69ADB929F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{0D495C06-7369-414D-B8AB-C0A68009FD15}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0D495C06-7369-414D-B8AB-C0A68009FD15}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0D495C06-7369-414D-B8AB-C0A68009FD15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9FCD60C-D45F-40D5-B98D-DCC69ADB929F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9FCD60C-D45F-40D5-B98D-DCC69ADB929F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9FCD60C-D45F-40D5-B98D-DCC69ADB929F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9FCD60C-D45F-40D5-B98D-DCC69ADB929F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
