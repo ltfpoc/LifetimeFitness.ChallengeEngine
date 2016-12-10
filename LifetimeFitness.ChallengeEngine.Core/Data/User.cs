@@ -24,7 +24,7 @@ namespace LifetimeFitness.ChallengeEngine.Core
         [StringLength(50)]
         public string LastName { get; set; }
 
-        public int? Role { get; set; }
+        public int? RoleId { get; set; }
 
         [Required]
         [StringLength(50)]

@@ -24,6 +24,7 @@ namespace LifetimeFitness.ChallengeEngine.API.Providers
         {
             context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { "*" });
             UserProvider _userProvider = new UserProvider();
+            UserRoleProvider _userRoleProvider = new UserRoleProvider();
             var entityUser = await _userProvider.LoginUser(context.UserName, context.Password);
             
             if (entityUser == null)
@@ -40,15 +41,17 @@ namespace LifetimeFitness.ChallengeEngine.API.Providers
                 };
             }
 
+            var userrole =  await _userRoleProvider.GetById(entityUser.RoleId.Value);
+
             var identity = new ClaimsIdentity(context.Options.AuthenticationType);
             identity.AddClaim(new Claim("sub", context.UserName));
-            identity.AddClaim(new Claim("role", "user"));
+            identity.AddClaim(new Claim("role", userrole.Description));
 
             var props = new AuthenticationProperties(new Dictionary<string, string>
                 {
                     { "firstName", entityUser.FirstName },
                     { "lastName", entityUser.LastName },
-                    { "userRole",  entityUser.UserRole.Description}
+                    { "userRole", userrole.Description }
                 });
             var ticket = new AuthenticationTicket(identity, props);
             context.Validated(ticket);

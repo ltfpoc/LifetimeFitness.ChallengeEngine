@@ -101,7 +101,7 @@ namespace LifetimeFitness.ChallengeEngine.DataAccess
             modelBuilder.Entity<UserRole>()
                 .HasMany(e => e.Users)
                 .WithOptional(e => e.UserRole)
-                .HasForeignKey(e => e.Role);
+                .HasForeignKey(e => e.RoleId);
 
             modelBuilder.Entity<User>()
                 .Property(e => e.FirstName)
