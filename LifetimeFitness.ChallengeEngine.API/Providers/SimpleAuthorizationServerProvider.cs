@@ -22,6 +22,7 @@ namespace LifetimeFitness.ChallengeEngine.API.Providers
 
         public override async Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
         {
+
             context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { "*" });
             UserProvider _userProvider = new UserProvider();
             UserRoleProvider _userRoleProvider = new UserRoleProvider();

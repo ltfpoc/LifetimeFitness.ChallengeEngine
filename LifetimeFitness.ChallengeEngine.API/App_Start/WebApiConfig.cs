@@ -13,8 +13,10 @@ namespace LifetimeFitness.ChallengeEngine.API
     {
         public static void Register(HttpConfiguration config)
         {
-            var cors = new EnableCorsAttribute("http://localhost:56507", "*", "*");
+            var cors = new EnableCorsAttribute("*", "*", "*");
             config.EnableCors(cors);
+
+            //.UseCors(CorsOptions.AllowAll);
             // Web API configuration and services
             // Configure Web API to use only bearer token authentication.
             //config.SuppressDefaultHostAuthentication();

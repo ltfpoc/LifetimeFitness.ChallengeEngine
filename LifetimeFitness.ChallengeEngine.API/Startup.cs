@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Http;
 using Microsoft.Owin.Security.OAuth;
 using LifetimeFitness.ChallengeEngine.API.Providers;
+using System.Web.Http.Cors;
 
 [assembly: OwinStartup(typeof(LifetimeFitness.ChallengeEngine.API.Startup))]
 
@@ -20,6 +21,7 @@ namespace LifetimeFitness.ChallengeEngine.API
             HttpConfiguration config = new HttpConfiguration();
             WebApiConfig.Register(config);
             app.UseWebApi(config);
+            
         }
 
         public void ConfigureOAuth(IAppBuilder app)
