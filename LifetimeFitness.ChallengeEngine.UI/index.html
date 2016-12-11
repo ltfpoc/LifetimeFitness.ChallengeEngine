@@ -62,13 +62,13 @@
             <form class="form-signin">
                 <div class="form-group">
                     <h4 for="exampleInputEmail1" class="colorgrey padbottom15px">Choose Your Club</h4>
-                    <select ng-model="myClub" ng-options="club.ClubId as ('Life Time Fitness (' + (club.City+ ' - '+club.State+ ')') ) for club in clubslist track by club.ClubId" class="form-control">
+                    <select ng-model="myClubValue" ng-options="club.ClubId as ('Life Time Fitness (' + (club.City+ ' - '+club.State+ ')') ) for club in clubslist track by club.ClubId" class="form-control">
                     </select>
                 </div>
 
                 <div class="col-xs-12 text-right pad-NoRight">
-                    <a href="#trainerLanding">Continue</a>
-                   <button class="btn btn-primary btn-block btn-signin marTop20px" type="submit" ng-click="go('/trainerLanding')">Continue <span class="arrow-right pad-left10px"> <img src="images/arrow-right.png"></span> </button>
+
+                    <button ng-click="shareClub(myClubValue)" class="btn btn-primary btn-block btn-signin marTop20px" type="submit">Continue <span class="arrow-right pad-left10px"> <img src="images/arrow-right.png"></span> </button>
                 </div>
             </form><!-- /form -->
 
