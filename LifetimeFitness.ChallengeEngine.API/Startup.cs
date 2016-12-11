@@ -17,8 +17,10 @@ namespace LifetimeFitness.ChallengeEngine.API
     {
         public void Configuration(IAppBuilder app)
         {
+            app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
             ConfigureOAuth(app);
             HttpConfiguration config = new HttpConfiguration();
+            config.EnableCors(new EnableCorsAttribute("*", "*", "GET, POST, OPTIONS, PUT, DELETE, TOKEN"));
             WebApiConfig.Register(config);
             app.UseWebApi(config);
             

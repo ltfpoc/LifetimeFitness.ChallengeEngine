@@ -48,6 +48,14 @@ app.controller('ClubCtrl', function ($scope, $http,  $location, $window) {
     };
     
 });
+   
+//app.controller("showCtrl", function ($scope, $window) {
+//    console.log($scope.myClubValue);
+//    $scope.shareClub = function () {
+//        var $popup = $window.open("landingpage1.html", "landingpage1", "width=100%,height=100%");
+//        $popup.myClubValue = $scope.myClubValue;
+//    }
+//});
 
 
 app.controller('CategoryCtrl', function ($scope, $http) {
@@ -61,6 +69,8 @@ app.controller('CategoryCtrl', function ($scope, $http) {
     });
 });
 
+
+
 app.controller('ChallengeCtrl', function ($scope, $http) {
     $scope.clubslist = [];
     $http({
@@ -72,14 +82,6 @@ app.controller('ChallengeCtrl', function ($scope, $http) {
     });
 });
 
-
-app.controller('EnrollChallengeCtrl', function ($scope, $http) {
-
-    $scope.change = function () {
-        alert(searchText);
-    };
-
-})
 
     //$http.get("http://localhost:56507/api/Club/GetClub").success(function (response) {
     //    var clubs = response.data;
