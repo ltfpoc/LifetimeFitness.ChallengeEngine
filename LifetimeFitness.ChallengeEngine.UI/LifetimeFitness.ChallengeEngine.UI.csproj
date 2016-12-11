@@ -323,6 +323,7 @@
     <Content Include="images\Zoom_icon.svg" />
     <Content Include="index.html" />
     <Content Include="js\main.min.js" />
+    <Content Include="js\Trainerlanding.js" />
     <Content Include="js\MainLifetimeFitness.js" />
     <Content Include="landingpage1.html" />
     <Content Include="lib\angular\angular-csp.css" />

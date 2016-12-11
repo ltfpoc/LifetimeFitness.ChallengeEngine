@@ -27,8 +27,8 @@ app.controller('LoginCtrl', function ($scope, $http) {
 
 
 });
-app.controller('ClubCtrl', function ($scope, $http) {
-    $scope.clubslist = [];
+app.controller('ClubCtrl', function ($scope, $http,$window) {
+    $scope.clubslist = {};
     $http({
         method: 'GET',
         url: 'http://localhost:56507/api/Club/GetClub'
@@ -36,7 +36,19 @@ app.controller('ClubCtrl', function ($scope, $http) {
         console.log(result);
         $scope.clubslist = result;
     });
+    $scope.shareClub = function () {
+        var $popup = $window.open("landingpage1.html", "landingpage1", "width=100%,height=100%");
+                $popup.myClubValue = $scope.myClubValue;
+    }
 });
+   
+//app.controller("showCtrl", function ($scope, $window) {
+//    console.log($scope.myClubValue);
+//    $scope.shareClub = function () {
+//        var $popup = $window.open("landingpage1.html", "landingpage1", "width=100%,height=100%");
+//        $popup.myClubValue = $scope.myClubValue;
+//    }
+//});
 
 
 app.controller('CategoryCtrl', function ($scope, $http) {
@@ -50,6 +62,8 @@ app.controller('CategoryCtrl', function ($scope, $http) {
     });
 });
 
+
+
 app.controller('ChallengeCtrl', function ($scope, $http) {
     $scope.clubslist = [];
     $http({
@@ -60,6 +74,18 @@ app.controller('ChallengeCtrl', function ($scope, $http) {
         $scope.clubslist = result;
     });
 });
+
+
+    //$scope.Students = [
+    //    { Name: "Akhilesh", Address: "Kolkata", Email: "xxxx@gmail.com" },
+    //    { Name: "Mukesh", Address: "Delhi", Email: "yyyy@gmail.com" },
+    //    { Name: "Rakesh", Address: "Mumbai", Email: "zzzz@gmail.com" },
+    //]
+
+    //$scope.Edit = function (d) {
+    //    myFactory.set(d);
+    //    $location.path('/EditData');
+    //}
 
 
     //$http.get("http://localhost:56507/api/Club/GetClub").success(function (response) {
