@@ -100,18 +100,23 @@
 
 
 
-            <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
+            <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;" ng-controller="ClubCtrl">
                 <ul class="nav navbar-nav">
                     <li class="dropdown">
-                        <a class="dropdown-toggle dividerLeftbig" data-toggle="dropdown" href="#">
+                        <!--<a class="dropdown-toggle dividerLeftbig" data-toggle="dropdown" href="#">
                             Chanhassen - Minneapolis
                             <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
+                        </a>-->
+                        <select ng-model="myClubValue" 
+                                ng-options="club.ClubId as ('Life Time Fitness (' + (club.City+ ' - '+club.State+ ')') ) for club in clubslist track by club.ClubId" 
+                                class="form-control">
+
+                        </select>
+                        <!--<ul class="dropdown-menu">
                             <li><a href="#">Page 1-1</a></li>
                             <li><a href="#">Page 1-2</a></li>
                             <li><a href="#">Page 1-3</a></li>
-                        </ul>
+                        </ul>-->
                     </li>
                 </ul>
 

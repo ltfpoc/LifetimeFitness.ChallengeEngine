@@ -1,5 +1,18 @@
 ﻿var app = angular.module('ltfAppTrainer', []);
 
+
+app.controller('ClubCtrl', function ($scope, $http, $location, $window) {
+    $scope.clubslist = [];
+    $http({
+        method: 'GET',
+        url: 'http://localhost:56507/api/Club/GetClub'
+    }).success(function (result) {
+        console.log(result);
+        $scope.clubslist = result;
+    });
+   
+});
+
 app.controller('CategoryCtrl', function ($scope, $http) {
     $scope.Categorylist = [];
     $http({
@@ -26,6 +39,15 @@ app.controller('myenroll', function ($scope, $http) {
     $scope.eCategorylist = [];
     $scope.eChallengelist = [];
     $scope.eUserlist = [];
+
+    $scope.clubslist = [];
+    
+    $http.get("http://localhost:56507/api/Club/GetClub").then(function (responses) {
+        console.log(responses);
+        $scope.clubslist = responses.data;
+        $scope.myClubValue = $scope.clubslist[0];
+    });
+
     $http.get("http://localhost:56507/api/Category/GetCategory").then(function (responses) {
         console.log(responses);
         $scope.eCategorylist = responses.data;
@@ -42,18 +64,23 @@ app.controller('myenroll', function ($scope, $http) {
         $scope.myUserValue = $scope.eUserlist[0];
     });
     $scope.enrollUser = function (myCategoryValue, myChallengeValue, myUserValue) {
+        //var data = {
+        //    category: myCategoryValue,
+        //    Challenge: myChallengeValue,
+        //    User: myUserValue
+        //};
         var data = {
-            category: myCategoryValue,
-            Challenge: myChallengeValue,
-            User: myUserValue
+            UserId : myUserValue,
+            ChallengeId :myChallengeValue  
         };
         console.log(data);
-        var config = {
-            headers: {
-                'Content-Type': 'application/json;charset=utf-8;'
-            }
-        };
-        $http.post('http://localhost:56507/api/Enrollment/PostEnrollment', JSON.stringify(data), config).then(function (response) {
+        //var config = {
+        //    headers: {
+        //        'Content-Type': 'application/json;charset=utf-8;'
+        //    }
+        //};
+        //$http.post('http://localhost:56507/api/Enrollment/PostEnrollment', JSON.stringify(data), config).then(function (response) {
+        $http.post('http://localhost:56507/api/Enrollment/PostEnrollment', data).then(function (response) {
             if (response.data)
                 $scope.msg = "Post Data Submitted Successfully!";
         }, function (response) {

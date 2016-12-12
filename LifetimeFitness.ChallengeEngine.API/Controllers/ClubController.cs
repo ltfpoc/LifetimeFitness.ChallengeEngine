@@ -11,7 +11,7 @@ namespace LifetimeFitness.ChallengeEngine.API.Controllers
     public class ClubController : ApiController
     {
         ClubProvider _ClubProvider = new ClubProvider();
-        [Authorize]
+        //[Authorize]
         [Route("GetClub")]
         // GET: api/Club
         public async Task<HttpResponseMessage> GetClub()
@@ -35,6 +35,7 @@ namespace LifetimeFitness.ChallengeEngine.API.Controllers
 
         }
 
+        [Authorize]
         [Route("GetClubId")]
         // GET: api/Club/5
         public async Task<HttpResponseMessage> GetClub(int id)
