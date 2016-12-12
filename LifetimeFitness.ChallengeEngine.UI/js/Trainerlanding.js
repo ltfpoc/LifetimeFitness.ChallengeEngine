@@ -1,6 +1,6 @@
 ﻿var app = angular.module('ltfAppTrainer', []);
 
-app.controller('myenroll', function ($scope, $http) {
+app.controller('myenroll', function ($scope, $http,$rootScope) {
     $scope.eCategorylist = [];
     $scope.eChallengelist = [];
     $scope.eUserlist = [];
@@ -9,6 +9,7 @@ app.controller('myenroll', function ($scope, $http) {
 
     $http.get("http://localhost:56507/api/Club/GetClub").then(function (responses) {
         console.log(responses);
+        console.log($rootScope.clubname);
         $scope.eClublist = responses.data;
         $scope.myClubValue = $scope.eClublist;
     });
@@ -42,14 +43,14 @@ app.controller('myenroll', function ($scope, $http) {
     //    console.log(myeChallengeValue);
     //    $scope.myeChallengeValue = myChallengeValue;
     //};
-    $scope.enrollUser = function (myCategoryValue, myChallengeValue, myUserValue) {
+    $scope.enrollUser = function (myCategoryValue, myChallengeValue, selectedUserId) {
         //var data = {
         //    category: myCategoryValue,
         //    Challenge: myChallengeValue,
         //    User: myUserValue
         //};
         var data = {
-            UserId : myUserValue,
+            UserId: selectedUserId.UserId,
             ChallengeId :myChallengeValue  
         };
         console.log(data);
