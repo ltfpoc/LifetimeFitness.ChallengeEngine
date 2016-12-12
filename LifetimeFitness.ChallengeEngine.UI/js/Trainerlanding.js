@@ -1,29 +1,32 @@
 ﻿var app = angular.module('ltfAppTrainer', []);
 
-app.controller('myenroll', function ($scope, $http,$rootScope) {
+app.controller('myenroll', function ($scope, $http, $rootScope) {
+
+    var baseUri = "http://localhost:56507/";
+
     $scope.eCategorylist = [];
     $scope.eChallengelist = [];
     $scope.eUserlist = [];
     $scope.eClublist = [];
 
 
-    $http.get("http://localhost:56507/api/Club/GetClub").then(function (responses) {
+    $http.get(baseUri + "api/Club/GetClub").then(function (responses) {
         console.log(responses);
         console.log($rootScope.clubname);
         $scope.eClublist = responses.data;
         $scope.myClubValue = $scope.eClublist;
     });
-    $http.get("http://localhost:56507/api/Category/GetCategory").then(function (responses) {
+    $http.get(baseUri + "api/Category/GetCategory").then(function (responses) {
         console.log(responses);
         $scope.eCategorylist = responses.data;
         $scope.myCategoryValue = $scope.eCategorylist;
     });
-    $http.get("http://localhost:56507/api/Challenge/GetChallenges").then(function (responses) {
+    $http.get(baseUri + "api/Challenge/GetChallenges").then(function (responses) {
         console.log(responses);
         $scope.eChallengelist = responses.data;
         $scope.myChallengeValue = $scope.eChallengelist;
     });
-    $http.get("http://localhost:56507/api/User/GetUsers").then(function (responses) {
+    $http.get(baseUri + "api/User/GetUsers").then(function (responses) {
         console.log(responses);
         $scope.eUserlist = responses.data;
         $scope.myUserValue = $scope.eUserlist[0];
@@ -33,36 +36,20 @@ app.controller('myenroll', function ($scope, $http,$rootScope) {
         $scope.selectedUserId = idSelected;
         console.log(idSelected);
     }
-    //$scope.getCategory = function (myCategoryValue) {
-    //    console.log(myCategoryValue);
-    //    console.log(myeCategoryValue);
-    //    $scope.myeCategoryValue = myCategoryValue;
-    //};
-    //$scope.getChallenge = function (myChallengeValue) {
-    //    console.log(myCategoryValue);
-    //    console.log(myeChallengeValue);
-    //    $scope.myeChallengeValue = myChallengeValue;
-    //};
+    
     $scope.enrollUser = function (myCategoryValue, myChallengeValue, selectedUserId) {
-        //var data = {
-        //    category: myCategoryValue,
-        //    Challenge: myChallengeValue,
-        //    User: myUserValue
-        //};
+        
         var data = {
             UserId: selectedUserId.UserId,
             ChallengeId :myChallengeValue  
         };
         console.log(data);
-        //var config = {
-        //    headers: {
-        //        'Content-Type': 'application/json;charset=utf-8;'
-        //    }
-        //};
-        //$http.post('http://localhost:56507/api/Enrollment/PostEnrollment', JSON.stringify(data), config).then(function (response) {
-        $http.post('http://localhost:56507/api/Enrollment/PostEnrollment', data).then(function (response) {
+        
+        $http.post(baseUri + 'api/Enrollment/PostEnrollment', data).then(function (response) {
             if (response.data)
                 $scope.msg = "Post Data Submitted Successfully!";
+            alert('User enrollment for challenge is successfull');
+
         }, function (response) {
             $scope.msg = "Service not Exists";
             $scope.statusval = response.status;
