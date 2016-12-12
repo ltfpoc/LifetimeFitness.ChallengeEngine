@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="ltfAppTrainer">
 <head>
     <title>LTE</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,7 +18,7 @@
     <script src="js/Trainerlanding.js"></script>
     <!--<link rel="stylesheet" href="css/navmenu-reveal.css">-->
 </head>
-<body ng-app="ltfAppTrainer">
+<body  ng-controller="myenroll">
 
     <!--<div class="navmenu navmenu-default navmenu-fixed-left">
       <a class="navmenu-brand" href="#">Project name</a>
@@ -100,7 +100,7 @@
 
 
 
-            <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;" ng-controller="ClubCtrl">
+            <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;" >
                 <ul class="nav navbar-nav">
                     <li class="dropdown">
                         <!--<a class="dropdown-toggle dividerLeftbig" data-toggle="dropdown" href="#">
@@ -108,7 +108,7 @@
                             <span class="caret"></span>
                         </a>-->
                         <select ng-model="myClubValue" 
-                                ng-options="club.ClubId as ('Life Time Fitness (' + (club.City+ ' - '+club.State+ ')') ) for club in clubslist track by club.ClubId" 
+                                ng-options="club.ClubId as ('Life Time Fitness (' + (club.City+ ' - '+club.State+ ')') ) for club in eClublist track by club.ClubId" 
                                 class="form-control">
 
                         </select>
@@ -141,7 +141,7 @@
         </div><!-- /.container -->
     </nav>
 
-    <div ng-controller="myenroll">
+    <div >
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-7 col-left-panel noPad">
