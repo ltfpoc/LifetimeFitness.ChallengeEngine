@@ -25,7 +25,7 @@
 //            //_logOut();
 //            alert(err);
 //        });
-       
+
 //    };
 
 
@@ -33,22 +33,26 @@
 
 
 
-app.controller('ClubCtrl', function ($scope, $http,  $location, $window) {
-    $scope.clubslist = [];
+app.controller('ClubCtrl', function ($scope, $http, $location, $rootScope, $log, $window) {
+    $scope.clubslist = [];
     $http({
-        method: 'GET',
-        url: 'http://localhost:56507/api/Club/GetClub'
+        method: 'GET',
+        url: 'http://localhost:56507/api/Club/GetClub'
     }).success(function (result) {
         console.log(result);
         $scope.clubslist = result;
     });
-
-    $scope.go = function (path) {
-        $window.location.href = '/landingpage1.html';
+    $scope.shareClub = function (myClubValue) {
+        $rootScope.clubname = myClubValue;
+        var url = "http://" + $window.location.host + "/landingpage1.html";
+        $window.location.href = url;
+        //$window.location.href=
+        //$location.path('/landingpage1.html');
+        //$window.location.href = '#/landingpage1.html';
     };
-    
+
 });
-   
+
 //app.controller("showCtrl", function ($scope, $window) {
 //    console.log($scope.myClubValue);
 //    $scope.shareClub = function () {
@@ -83,16 +87,16 @@ app.controller('ChallengeCtrl', function ($scope, $http) {
 });
 
 
-    //$http.get("http://localhost:56507/api/Club/GetClub").success(function (response) {
-    //    var clubs = response.data;
+//$http.get("http://localhost:56507/api/Club/GetClub").success(function (response) {
+//    var clubs = response.data;
 
-    //    //$.map(data, function (clubs) {
-    //    //    arrclubs.push(clubs.ClubName + "," + clubs.City);
-    //    //});
-    //    $scope.clubslist = arrclubs;
-    //}).error(function (status) {
-    //    alert(status);
-    //});
+//    //$.map(data, function (clubs) {
+//    //    arrclubs.push(clubs.ClubName + "," + clubs.City);
+//    //});
+//    $scope.clubslist = arrclubs;
+//}).error(function (status) {
+//    alert(status);
+//});
 
 //});
 
@@ -205,7 +209,7 @@ app.factory('authService', ['$http', '$q', 'localStorageService', function ($htt
 
 'use strict';
 app.controller('LoginCtrl', ['$scope', '$location', 'authService', function ($scope, $location, authService) {
-   
+
     $scope.loginData = {
         userName: "",
         password: ""
