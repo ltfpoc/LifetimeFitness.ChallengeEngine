@@ -17,6 +17,11 @@
     <script src="Scripts/angular.min.js"></script>
     <script src="js/Trainerlanding.js"></script>
     <!--<link rel="stylesheet" href="css/navmenu-reveal.css">-->
+    <style>
+        .selectedUser {
+            background-color: lightgray;
+        }
+    </style>
 </head>
 <body  ng-controller="myenroll">
 
@@ -570,10 +575,10 @@
                                 </div>
                                 <button type="submit" ng-click="enrollUser(myCategoryValue,myChallengeValue,myUserValue)" class="btn btn-primary">+</button>
                             </form>
-                            <ul class="list-unstyled search_user_list marTop40px">
-                                <li ng-repeat="users in eUserlist | filter:userValue">
+                            <ul class="list-unstyled search_user_list marTop40px" >
+                                <li ng-repeat="users in eUserlist | filter:userValue" ng-click="setSelectedUserId(users.UserId)" ng-class="{selectedUser : users.UserId === selectedUserId}">
                                     <img src="images/JohnMac_img.jpg" alt="..." width="50" class="img-circle" />
-                                    <span>{{users.FirstName+ ' ' + users.LastName}}</span>
+                                    <span id="{{ users.UserId }}">{{users.FirstName+ ' ' + users.LastName}}</span>
                                 </li>
                                 <!--<li><img src="images/AnaMathew_img.jpg" alt="..." class="img-circle" width="50"><span>Ana Mathew</span></li>
                                 <li><img src="images/JohnPeter_img.jpg" alt="..." class="img-circle" width="50"><span>Daryl Ginn</span></li>

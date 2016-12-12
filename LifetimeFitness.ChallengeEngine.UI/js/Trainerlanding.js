@@ -27,6 +27,11 @@ app.controller('myenroll', function ($scope, $http) {
         $scope.eUserlist = responses.data;
         $scope.myUserValue = $scope.eUserlist[0];
     });
+    $scope.selectedUserId = null;
+    $scope.setSelectedUserId = function (idSelected) {
+        $scope.selectedUserId = idSelected;
+        console.log(idSelected);
+    }
     //$scope.getCategory = function (myCategoryValue) {
     //    console.log(myCategoryValue);
     //    console.log(myeCategoryValue);
