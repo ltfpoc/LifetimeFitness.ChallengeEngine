@@ -198,10 +198,16 @@
 
                                 <div class="col-md-10">
 
-                                    <select class="form-control">
+                                    <select ng-model="myUserValue"
+                                            ng-options="users.UserId as (users.FirstName+ ' ' + users.LastName) for users in eUserlist track by users.UserId"
+                                            class="form-control">
                                         <option>Select Members</option>
-                                        <option>Members-1</option>
                                     </select>
+                                    <!--<select class="form-control">
+        <option>Select Members</option>
+        <option>Members-1</option>
+    </select>-->
+
                                 </div>
 
                                 <div class="col-md-2">
