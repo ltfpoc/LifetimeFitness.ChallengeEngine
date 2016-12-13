@@ -13,7 +13,7 @@ app.controller('myenroll', function ($scope, $http, $rootScope, $window) {
     $scope.myClubValue = 5;
     $http.get(baseUri + "api/Club/GetClub").then(function (responses) {
         $scope.eClublist = responses.data;
-        //$scope.myClubValue = $window.localStorageService.get("clubname");
+        $scope.myClubValue = $window.localStorageService.get("clubname");
     });
     $http.get(baseUri + "api/Category/GetCategory").then(function (responses) {
         $scope.eCategorylist = responses.data;
@@ -38,6 +38,7 @@ app.controller('myenroll', function ($scope, $http, $rootScope, $window) {
     $scope.GetSelectin = function ()
     {
         $scope.myeCategoryValue = $scope.myCategoryValue;
+        console.log($scope.myeCategoryValue);
         $scope.myeChallengeValue = $scope.myChallengeValue;
     }
 
