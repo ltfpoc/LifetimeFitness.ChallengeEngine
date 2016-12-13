@@ -488,17 +488,28 @@
                                 <div class="form-group">
                                     <h4 for="exampleInputEmail1" class="colorgrey padbottom15px  padLeft15px">Enroll for Challange</h4>
                                     <div class="col-md-6">
-                                        <select ng-model="myeCategoryValue" ng-change="GetChallengesPopup()"
-                                                ng-options="category.ChallengeTypeId as
-                                        category.ChallengeTypeTitle for category in eCategorylist track by category.ChallengeTypeId"
-                                                class="form-control">
+                                        
+                                        <select ng-model="myeCategoryValue" ng-change="GetChallengesPopup()" class="form-control">
+                                            <!--ng-options="category.ChallengeTypeId as
+                                            category.ChallengeTypeTitle for category in eCategorylist track by category.ChallengeTypeId"
+                                                    value="{{ChallengeTypeId}}" ng-selected=""-->
+
                                             <option style="display:none" value="">Select Category</option>
+                                            <option ng-repeat="category in eCategorylist" value="{{category.ChallengeTypeId }}"
+                                                    ng-selected="category.ChallengeTypeId  == myeCategoryValue">
+                                                {{category.ChallengeTypeTitle}}
+                                            </option>
+
                                         </select>
                                     </div>
                                     <div class="col-md-6">
-                                        <select ng-model="myeChallengeValue" ng-change="GetUsersNotInChallenge()"
-                                                ng-options="challenge.ChallengeId as challenge.Name for challenge in eChallengelist track by challenge.ChallengeId" class="form-control">
+                                        <select ng-model="myeChallengeValue" ng-change="GetUsersNotInChallenge()" class="form-control">
+                                                <!--ng-options="challenge.ChallengeId as challenge.Name for challenge in eChallengelist track by challenge.ChallengeId"--> 
                                             <option style="display:none" value="">Select Challange</option>
+                                            <option ng-repeat="challenge in eChallengelist" value="{{challenge.ChallengeId }}"
+                                                    ng-selected="challenge.ChallengeId  == myeChallengeValue">
+                                                {{challenge.Name}}
+                                            </option>
                                         </select>
                                     </div>
                                 </div>
@@ -562,7 +573,7 @@
                                 </div>
                                 <button type="submit" ng-click="enrollUser(myCategoryValue,myChallengeValue,myUserValue,myClubValue)" class="btn btn-primary">+</button>
                             </form>
-                            <ul class="list-unstyled search_user_list marTop40px" >
+                            <ul class="list-unstyled search_user_list marTop40px">
                                 <li ng-repeat="users in UserChalist | filter:userValue" ng-click="setSelectedUserId(users.UserId)" ng-class="{selectedUser : users.UserId === selectedUserId}">
                                     <img src="images/JohnMac_img.jpg" alt="..." width="50" class="img-circle" />
                                     <span id="{{ users.UserId }}">{{users.FirstName+ ' ' + users.LastName}}</span>
