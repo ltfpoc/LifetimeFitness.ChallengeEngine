@@ -55,14 +55,17 @@ namespace LifetimeFitness.ChallengeEngine.Business
             return uentity;
         }
 
-        public async Task<IEnumerable<Userd>> GetUsersNotInChallenge(int _ChallengeId)
+        public async Task<IEnumerable<Userd>> GetUsersNotInChallenge(int _ChallengeId, int _clubId)
         {
+            ChallengeClubRelationProvider _userChallengeEnrollmentProvider = new ChallengeClubRelationProvider();
+            var challengeClubRelationship = await _userChallengeEnrollmentProvider.GetChallengeClubRelationship(_clubId, _ChallengeId);
+
             HashSet<Userd> userlist = new HashSet<Userd>();
             List<string> lstRoles = new List<string>() { "Admin", "Trainer" };
             var entity = await GetAll();
             UserRoleProvider _UserRoleProvider = new UserRoleProvider();
             var entiryRoles = await _UserRoleProvider.GetAll();
-            entity = entity.Where(a => a.UserChallengeEnrollments.Any(b => b.ChallengeId != _ChallengeId));
+            entity = entity.Where(a => a.UserChallengeEnrollments.Any(b => b.ChallengeClubRelationId != challengeClubRelationship.ChallengeClubRelationId));
             var uentity = (from a in entity
                            join b in entiryRoles.Where(i => !lstRoles.Contains(i.Description))
                            on a.RoleId equals b.RoleId

@@ -11,6 +11,8 @@ app.controller('myenroll', function ($scope, $http, $rootScope, $window) {
     $scope.myClubValue = 5;
     $scope.UserChalist = [];
     $scope.myClubValue = 5;
+    $scope.challengeClubRelationshipId = 0;
+
     $http.get(baseUri + "api/Club/GetClub").then(function (responses) {
         $scope.eClublist = responses.data;
         //$scope.myClubValue = $window.localStorageService.get("clubname");
@@ -47,7 +49,8 @@ app.controller('myenroll', function ($scope, $http, $rootScope, $window) {
         $scope.myUserValue = $scope.eUserlist[0];
     });
     $scope.GetUsersNotInChallenge = function () {
-        $http.get(baseUri + "api/Challenge/GetUsers/Challenge/" + $scope.myeChallengeValue).then(function (responses) {
+        //console
+        $http.get(baseUri + "api/Challenge/GetUsers/Challenge/" + $scope.myeChallengeValue + "/Club/" + $scope.myClubValue).then(function (responses) {
             console.log(baseUri + "api/Challenge/GetUsers/" + $scope.myeChallengeValue);
             $scope.UserChalist = responses.data;
             $scope.myUserValue = $scope.UserChalist[0];
@@ -60,11 +63,17 @@ app.controller('myenroll', function ($scope, $http, $rootScope, $window) {
     }
 
     $scope.enrollUser = function (myCategoryValue, myChallengeValue, selectedUserId, myClubValue) {
+        //"api/Challenge/GetChallengeClubRelationship/Club/{clubid}/Challenge/{challengeId}")
+         
+        $http.get(baseUri + "api/Challenge/GetChallengeClubRelationship/Club/" + $scope.myClubValue + "/Challenge/" + $scope.myeChallengeValue).then(function (responses) {
+            $scope.challengeClubRelationshipId = responses.data.ChallengeClubRelationId;
+            //$scope.myUserValue = $scope.UserChalist[0];
+        });
 
         var data = {
             UserId: selectedUserId.UserId,
             ChallengeId: myChallengeValue,
-            ClubId : myClubValue
+            ChallengeClubRelationId : challengeClubRelationshipId
         };
         console.log(selectedUserId.UserId);
 
@@ -83,36 +92,5 @@ app.controller('myenroll', function ($scope, $http, $rootScope, $window) {
 });
 
 
-//'use strict';
-//app.factory('authInterceptorService', ['$q', '$location', 'localStorageService', function ($q, $location, localStorageService) {
 
-//    var authInterceptorServiceFactory = {};
 
-//    var _request = function (config) {
-
-//        config.headers = config.headers || {};
-
-//        var authData = localStorageService.get('authorizationData');
-//        if (authData) {
-//            config.headers.Authorization = 'Bearer ' + authData.token;
-//        }
-
-//        return config;
-//    }
-
-//    var _responseError = function (rejection) {
-//        if (rejection.status === 401) {
-//            $location.path('/login');
-//        }
-//        return $q.reject(rejection);
-//    }
-
-//    authInterceptorServiceFactory.request = _request;
-//    authInterceptorServiceFactory.responseError = _responseError;
-
-//    return authInterceptorServiceFactory;
-//}]);
-
-//app.config(function ($httpProvider) {
-//    $httpProvider.interceptors.push('authInterceptorService');
-//});

@@ -82,12 +82,12 @@ namespace LifetimeFitness.ChallengeEngine.API.Controllers
 
 
         [HttpGet]
-        [Route("GetUsers/Challenge/{categoryid}")]
-        public async Task<HttpResponseMessage> GetUsers(int ChallengeId)
+        [Route("GetUsers/Challenge/{challengeId}/Club/{clubId}")]
+        public async Task<HttpResponseMessage> GetUsers(int ChallengeId, int ClubId)
         {
             try
             {
-                var entity = await _userProvider.GetUsersNotInChallenge(ChallengeId);
+                var entity = await _userProvider.GetUsersNotInChallenge(ChallengeId,ClubId);
                 if (entity != null)
                 {
                     return Request.CreateResponse(HttpStatusCode.OK, entity);

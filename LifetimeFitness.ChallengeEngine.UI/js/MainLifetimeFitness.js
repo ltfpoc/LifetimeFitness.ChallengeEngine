@@ -1,6 +1,6 @@
-﻿var app = angular.module('ltfApp', ['ngRoute', 'LocalStorageModule', 'ltfAppTrainer']);
+﻿var app = angular.module('ltfApp', ['ngRoute', 'LocalStorageModule']);
 
-var serviceUri = 'http://localhost:56507/';
+
 app.controller('ClubCtrl', function ($scope, $http, $location, $log, $window) {
     $scope.clubslist = [];
     $http({
@@ -20,19 +20,19 @@ app.controller('ClubCtrl', function ($scope, $http, $location, $log, $window) {
 
 
 
-app.config(function ($routeProvider) {
+//app.config(function ($routeProvider) {
 
-    $routeProvider.when("/trainerLanding", {
-        templateUrl: serviceUri + "landingpage1.html"
-    });
+//    $routeProvider.when("/trainerLanding", {
+//        templateUrl: serviceUri + "landingpage1.html"
+//    });
 
-    //$routeProvider.when("/login", {
-    //    controller: "loginController",
-    //    templateUrl: "/app/views/login.html"
-    //});
+//    $routeProvider.when("/login", {
+//        controller: "loginController",
+//        templateUrl: "/app/views/login.html"
+//    });
 
-    //$routeProvider.otherwise({ redirectTo: "/home" });
-});
+//    $routeProvider.otherwise({ redirectTo: "/home" });
+//});
 
 app.run(['authService', function (authService) {
     authService.fillAuthData();
@@ -63,7 +63,7 @@ app.factory('authService', ['$http', '$q', 'localStorageService', function ($htt
     var _login = function (loginData) {
 
         var data = "grant_type=password&username=" + loginData.userName + "&password=" + loginData.password;
-
+        console.log(data);
         var deferred = $q.defer();
 
         $http.post(serviceBase + 'token', data, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }).success(function (response) {
