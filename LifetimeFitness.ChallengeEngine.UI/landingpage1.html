@@ -23,7 +23,7 @@
         }
     </style>
 </head>
-<body  ng-controller="myenroll">
+<body ng-controller="myenroll">
 
     <!--<div class="navmenu navmenu-default navmenu-fixed-left">
       <a class="navmenu-brand" href="#">Project name</a>
@@ -105,18 +105,16 @@
 
 
 
-            <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;" >
+            <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
                 <ul class="nav navbar-nav">
                     <li class="dropdown">
                         <!--<a class="dropdown-toggle dividerLeftbig" data-toggle="dropdown" href="#">
                             Chanhassen - Minneapolis
                             <span class="caret"></span>
                         </a>-->
-                        <select ng-model="myClubValue" 
-                                ng-options="club.ClubId as ('Life Time Fitness (' + (club.City+ ' - '+club.State+ ')') ) for club in eClublist track by club.ClubId" 
-                                class="form-control">
-
-                        </select>
+                        <select ng-model="myClubValue"
+                                ng-options="club.ClubId as ('Life Time Fitness (' + (club.City+ ' - '+club.State+ ')') ) for club in eClublist track by club.ClubId"
+                                class="form-control"></select>
                         <!--<ul class="dropdown-menu">
                             <li><a href="#">Page 1-1</a></li>
                             <li><a href="#">Page 1-2</a></li>
@@ -146,7 +144,7 @@
         </div><!-- /.container -->
     </nav>
 
-    <div >
+    <div>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-7 col-left-panel noPad">
@@ -162,25 +160,17 @@
                                             ng-options="category.ChallengeTypeId as
                                         category.ChallengeTypeTitle for category in eCategorylist track by category.ChallengeTypeId"
                                             class="form-control">
-                                        <option value="">Select Category</option>
+                                        <option style="display:none" value="">Select Category</option>
                                     </select>
-                                    <!--<select class="form-control">
-                                        <option>Select Category</option>
-                                        <option>Category-1</option>
-                                    </select>-->
                                 </div>
                                 <div class="col-md-5">
-                                    <select ng-change="getChallenge(myChallengeValue)" ng-model="myChallengeValue"
+                                    <select ng-model="myChallengeValue"
                                             ng-options="challenge.ChallengeId as challenge.Name for challenge in eChallengelist track by challenge.ChallengeId" class="form-control">
-                                        <option value="">Select Challange</option>
+                                        <option style="display:none" value="">Select Challange</option>
                                     </select>
-                                    <!--<select class="form-control">
-                                        <option>Select Challange</option>
-                                        <option>Category-1</option>
-                                    </select>-->
                                 </div>
                                 <div class="col-md-2">
-                                    <button class="btn btn-primary btn-block btn-signin" type="button" data-toggle="modal" data-target="#myModal">Go</button>
+                                    <button class="btn btn-primary btn-block btn-signin" type="button" data-toggle="modal" data-target="#myModal" ng-click="GetSelectin()">Go</button>
                                 </div>
 
 
@@ -204,9 +194,9 @@
                                         <option value="">Select Members</option>
                                     </select>
                                     <!--<select class="form-control">
-        <option>Select Members</option>
-        <option>Members-1</option>
-    </select>-->
+                                        <option>Select Members</option>
+                                        <option>Members-1</option>
+                                    </select>-->
 
                                 </div>
 
@@ -490,35 +480,26 @@
                 <!-- Modal content-->
                 <div class="modal-content">
 
-                    <div class="modal-body clearfix noPad" >
+                    <div class="modal-body clearfix noPad">
 
                         <div class="col-md-7 pad15px">
 
                             <form class="clearfix">
                                 <div class="form-group">
                                     <h4 for="exampleInputEmail1" class="colorgrey padbottom15px  padLeft15px">Enroll for Challange</h4>
-
                                     <div class="col-md-6">
-                                        <select ng-model="myeCategoryValue"
+                                        <select ng-change="GetChallenges()" ng-model="myCategoryValue"
                                                 ng-options="category.ChallengeTypeId as
                                         category.ChallengeTypeTitle for category in eCategorylist track by category.ChallengeTypeId"
                                                 class="form-control">
-                                            <option value="">Select Category</option>
+                                            <option style="display:none" value="">Select Category</option>
                                         </select>
-                                        <!--<select class="form-control">
-                                            <option>Select Category</option>
-                                            <option>Category-1</option>
-                                        </select>-->
                                     </div>
                                     <div class="col-md-6">
-                                        <select ng-model="myeChallengeValue"
+                                        <select ng-model="myChallengeValue"
                                                 ng-options="challenge.ChallengeId as challenge.Name for challenge in eChallengelist track by challenge.ChallengeId" class="form-control">
-                                            <option value="">Select Challange</option>
+                                            <option style="display:none" value="">Select Challange</option>
                                         </select>
-                                        <!--<select class="form-control">
-                                            <option>Select Challange</option>
-                                            <option>Category-1</option>
-                                        </select>-->
                                     </div>
                                 </div>
 
@@ -581,7 +562,7 @@
                                 </div>
                                 <button type="submit" ng-click="enrollUser(myCategoryValue,myChallengeValue,myUserValue)" class="btn btn-primary">+</button>
                             </form>
-                            <ul class="list-unstyled search_user_list marTop40px" >
+                            <ul class="list-unstyled search_user_list marTop40px">
                                 <li ng-repeat="users in eUserlist | filter:userValue" ng-click="setSelectedUserId(users.UserId)" ng-class="{selectedUser : users.UserId === selectedUserId}">
                                     <img src="images/JohnMac_img.jpg" alt="..." width="50" class="img-circle" />
                                     <span id="{{ users.UserId }}">{{users.FirstName+ ' ' + users.LastName}}</span>

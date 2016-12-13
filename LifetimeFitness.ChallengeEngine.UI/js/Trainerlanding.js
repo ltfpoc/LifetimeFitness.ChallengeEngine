@@ -1,6 +1,6 @@
 ﻿var app = angular.module('ltfAppTrainer', []);
 
-app.controller('myenroll', function ($scope, $http, $rootScope) {
+app.controller('myenroll', function ($scope, $http,$window, $rootScope) {
 
     var baseUri = "http://localhost:56507/";
 
@@ -8,11 +8,12 @@ app.controller('myenroll', function ($scope, $http, $rootScope) {
     $scope.eChallengelist = [];
     $scope.eUserlist = [];
     $scope.eClublist = [];
+    $scope.myClubValue = 5;
     $scope.UserChalist = [];
     $http.get(baseUri + "api/Club/GetClub").then(function (responses) {
-        console.log(myClubValue);
         $scope.eClublist = responses.data;
-        $scope.myClubValue = $window.localStorageService.get("clubname");
+        var clubs = $window.localStorageService.get("clubname");
+        $scope.myClubValue = clubs;
     });
     $http.get(baseUri + "api/Category/GetCategory").then(function (responses) {
         $scope.eCategorylist = responses.data;
@@ -25,6 +26,11 @@ app.controller('myenroll', function ($scope, $http, $rootScope) {
             $scope.eChallengelist = responses.data;
             $scope.myChallengeValue = $scope.eChallengelist;
         });
+    }
+    $scope.GetSelectin = function ()
+    {
+        $scope.myeCategoryValue = $scope.myCategoryValue;
+        $scope.myeChallengeValue = $scope.myChallengeValue;
     }
 
     $http.get(baseUri + "api/User/GetUsers").then(function (responses) {
