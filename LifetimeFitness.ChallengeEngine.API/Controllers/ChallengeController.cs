@@ -13,6 +13,7 @@ namespace LifetimeFitness.ChallengeEngine.API.Controllers
     public class ChallengeController : ApiController
     {
         ChallengeProvider _ChallengeProvider = new ChallengeProvider();
+        ChallengeClubRelationProvider _ChallengeClubRelationProvider = new ChallengeClubRelationProvider();
 
         [Route("GetChallenges")]
         // GET: api/Challenge
@@ -94,5 +95,26 @@ namespace LifetimeFitness.ChallengeEngine.API.Controllers
             }
         }
 
+        [Route("GetChallengeClubRelationship")]
+        public async Task<HttpResponseMessage> GetChallengeClubRelationship(int clubId, int challengeId)
+        {
+            try
+            {
+                var entity = await _ChallengeClubRelationProvider.GetChallengeClubRelationship(clubId, challengeId);
+                
+                if (entity != null)
+                {
+                    return Request.CreateResponse(HttpStatusCode.OK, entity);
+                }
+                else
+                {
+                    return Request.CreateErrorResponse(HttpStatusCode.NotFound, "ChallengeClubRelationship not found");
+                }
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
+            }
+        }
     }
 }

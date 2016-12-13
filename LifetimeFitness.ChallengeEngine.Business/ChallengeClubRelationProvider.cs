@@ -54,5 +54,10 @@ namespace LifetimeFitness.ChallengeEngine.Business
         {
             return await challengeClubRelationRepository.GetAllBy(filter, orderBy);
         }
+        public async Task<ChallengeClubRelation> GetChallengeClubRelationship(int clubId, int challengeId)
+        {
+            var entity = await FindBy(c => c.ChallengeId == challengeId && c.ClubId == clubId);
+            return entity.FirstOrDefault();
+        }
     }
 }
