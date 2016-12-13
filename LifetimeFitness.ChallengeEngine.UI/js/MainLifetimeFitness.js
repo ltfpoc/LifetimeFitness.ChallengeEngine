@@ -13,6 +13,7 @@ app.controller('ClubCtrl', function ($scope, $http, $location, $log, $window) {
     $scope.shareClub = function (myClubValue) {
         $window.localStorageService.set("clubname", myClubValue);
         var url = "http://" + $window.location.host + "/landingpage1.html";
+        $window.localStorageService.set("clubname", myClubValue);
         $window.location.href = url;
     };
     console.log($scope);

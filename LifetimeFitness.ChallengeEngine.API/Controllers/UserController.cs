@@ -82,7 +82,7 @@ namespace LifetimeFitness.ChallengeEngine.API.Controllers
 
 
         [HttpGet]
-        [Route("GetUsers/Challenge/{categoryid}")]
+        [Route("GetUsers/Challenge/{ChallengeId}")]
         public async Task<HttpResponseMessage> GetUsers(int ChallengeId)
         {
             try
