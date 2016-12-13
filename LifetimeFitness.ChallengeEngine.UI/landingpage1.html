@@ -158,7 +158,7 @@
                                 <h4 for="exampleInputEmail1" class="colorgrey padbottom15px  padLeft15px">Enroll for Challange</h4>
 
                                 <div class="col-md-5">
-                                    <select ng-change="getCategory(myCategoryValue)" ng-model="myCategoryValue"
+                                    <select ng-change="GetChallenges()" ng-model="myCategoryValue"
                                             ng-options="category.ChallengeTypeId as
                                         category.ChallengeTypeTitle for category in eCategorylist track by category.ChallengeTypeId"
                                             class="form-control">

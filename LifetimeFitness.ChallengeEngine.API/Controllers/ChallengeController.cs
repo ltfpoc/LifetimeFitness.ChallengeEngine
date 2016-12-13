@@ -8,13 +8,15 @@ using System.Web.Http;
 
 namespace LifetimeFitness.ChallengeEngine.API.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [RoutePrefix("api/Challenge")]
     public class ChallengeController : ApiController
     {
         ChallengeProvider _ChallengeProvider = new ChallengeProvider();
+        ChallengeClubRelationProvider _ChallengeClubRelationProvider = new ChallengeClubRelationProvider();
 
-        [Route("GetChallenges")]
+
+       [Route("GetChallenges")]
         // GET: api/Challenge
         public async Task<HttpResponseMessage> GetChallenges()
         {
@@ -94,5 +96,25 @@ namespace LifetimeFitness.ChallengeEngine.API.Controllers
             }
         }
 
+
+        //public async Task<HttpResponseMessage> GetChallengeClubRelationship(int clubId, int challengeId)
+        //{
+        //    try
+        //    {
+        //        var entity = await _ChallengeClubRelationProvider.GetById(clubId);
+        //        if (entity != null)
+        //        {
+        //            return Request.CreateResponse(HttpStatusCode.OK, entity);
+        //        }
+        //        else
+        //        {
+        //            return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Challenge with " + id + "not found");
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
+        //    }
+        //}
     }
 }

@@ -21,7 +21,7 @@ namespace LifetimeFitness.ChallengeEngine.API.Controllers
         {
             try
             {
-                var entity = await _userProvider.GetAll();
+                var entity = await _userProvider.GetAllUsers();
                 if (entity != null)
                 {
                     return Request.CreateResponse(HttpStatusCode.OK, entity);
@@ -65,6 +65,29 @@ namespace LifetimeFitness.ChallengeEngine.API.Controllers
             try
             {
                 var entity = await _userProvider.GetAllBy(u => u.FirstName.Contains(userName) || u.LastName.Contains(userName));
+                if (entity != null)
+                {
+                    return Request.CreateResponse(HttpStatusCode.OK, entity);
+                }
+                else
+                {
+                    return Request.CreateErrorResponse(HttpStatusCode.NotFound, "User not found");
+                }
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
+            }
+        }
+
+
+        [HttpGet]
+        [Route("GetUsers/Challenge/{categoryid}")]
+        public async Task<HttpResponseMessage> GetUsers(int ChallengeId)
+        {
+            try
+            {
+                var entity = await _userProvider.GetUsersNotInChallenge(ChallengeId);
                 if (entity != null)
                 {
                     return Request.CreateResponse(HttpStatusCode.OK, entity);

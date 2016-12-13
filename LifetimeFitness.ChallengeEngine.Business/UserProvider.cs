@@ -1,4 +1,5 @@
 ﻿using LifetimeFitness.ChallengeEngine.Core;
+using LifetimeFitness.ChallengeEngine.Core.Domin;
 using LifetimeFitness.ChallengeEngine.DataAccess;
 using System;
 using System.Collections.Generic;
@@ -21,22 +22,59 @@ namespace LifetimeFitness.ChallengeEngine.Business
 
         public int Insert(User _Challenge)
         {
-           return userRepository.Insert(_Challenge);
+            return userRepository.Insert(_Challenge);
         }
 
         public int Update(User _Challenge)
         {
-           return userRepository.Update(_Challenge);
+            return userRepository.Update(_Challenge);
         }
 
         public int Delete(User _Challenge)
         {
-           return userRepository.Delete(_Challenge);
+            return userRepository.Delete(_Challenge);
         }
 
         public async Task<IEnumerable<User>> GetAll()
         {
             return await userRepository.GetAll();
+        }
+
+        public async Task<IEnumerable<Userd>> GetAllUsers()
+        {
+            var entity = await userRepository.GetAll();
+            var uentity = (from a in entity
+                           select new Userd
+                           {
+                               UserId = a.UserId,
+                               Name = a.FirstName + " " + a.LastName,
+                               UserName = a.UserName,
+                               UserRole = a.UserRole.Description
+                           }
+                    ).ToList();
+            return uentity;
+        }
+
+        public async Task<IEnumerable<Userd>> GetUsersNotInChallenge(int _ChallengeId)
+        {
+            HashSet<Userd> userlist = new HashSet<Userd>();
+            List<string> lstRoles = new List<string>() { "Admin", "Trainer" };
+            var entity = await GetAll();
+            UserRoleProvider _UserRoleProvider = new UserRoleProvider();
+            var entiryRoles = await _UserRoleProvider.GetAll();
+            entity = entity.Where(a => a.UserChallengeEnrollments.Any(b => b.ChallengeId != _ChallengeId));
+            var uentity = (from a in entity
+                           join b in entiryRoles.Where(i => !lstRoles.Contains(i.Description))
+                           on a.RoleId equals b.RoleId
+                           select new Userd
+                           {
+                               UserId = a.UserId,
+                               Name = a.FirstName + " " + a.LastName,
+                               UserName = a.UserName,
+                               UserRole = a.UserRole.Description
+                           }
+                      ).ToList();
+            return uentity;
         }
 
         public async Task<User> GetById(int _id)
@@ -73,7 +111,6 @@ namespace LifetimeFitness.ChallengeEngine.Business
             var result = Insert(usertoregister);
             return result;
         }
-
 
     }
 }

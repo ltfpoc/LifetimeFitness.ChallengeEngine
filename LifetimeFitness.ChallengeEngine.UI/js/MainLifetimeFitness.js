@@ -1,7 +1,7 @@
-﻿var app = angular.module('ltfApp', ['ngRoute', 'LocalStorageModule']);
+﻿var app = angular.module('ltfApp', ['ngRoute', 'LocalStorageModule', 'ltfAppTrainer']);
 
 var serviceUri = 'http://localhost:56507/';
-app.controller('ClubCtrl', function ($scope, $http, $location, $rootScope, $log, $window) {
+app.controller('ClubCtrl', function ($scope, $http, $location, $log, $window) {
     $scope.clubslist = [];
     $http({
         method: 'GET',
@@ -11,11 +11,11 @@ app.controller('ClubCtrl', function ($scope, $http, $location, $rootScope, $log,
         $scope.clubslist = result;
     });
     $scope.shareClub = function (myClubValue) {
-        $rootScope.clubname = myClubValue;
+        $window.localStorageService.set("clubname", myClubValue);
         var url = "http://" + $window.location.host + "/landingpage1.html";
         $window.location.href = url;
     };
-
+    console.log($scope);
 });
 
 
