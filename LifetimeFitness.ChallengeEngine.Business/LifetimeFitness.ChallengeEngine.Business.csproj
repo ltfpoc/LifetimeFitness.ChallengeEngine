@@ -40,7 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusinessLayer\CategoryBL.cs" />
     <Compile Include="BusinessLayer\ChallengesBL.cs" />
+    <Compile Include="BusinessLayer\ClubBL.cs" />
     <Compile Include="ChallengeClubRelationProvider.cs" />
     <Compile Include="ChallengeProvider.cs" />
     <Compile Include="ChallengeTypeProvider.cs" />

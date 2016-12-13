@@ -4,6 +4,7 @@ namespace LifetimeFitness.ChallengeEngine.Core
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
+    using Newtonsoft.Json;
 
     public class Challenge
     {
@@ -32,12 +33,16 @@ namespace LifetimeFitness.ChallengeEngine.Core
 
         public bool IsOganizationLevel { get; set; }
 
+        [JsonIgnore]
         public virtual ICollection<ChallengeClubRelation> ChallengeClubRelations { get; set; }
 
+        [JsonIgnore]
         public virtual ChallengeType ChallengeType { get; set; }
 
+        [JsonIgnore]
         public virtual ClubLevel ClubLevel { get; set; }
 
+        [JsonIgnore]
         public virtual ICollection<UserChallengeEnrollment> UserChallengeEnrollments { get; set; }
     }
 }

@@ -4,6 +4,7 @@ namespace LifetimeFitness.ChallengeEngine.Core
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
+    using Newtonsoft.Json;
 
     public class Measurement
     {
@@ -23,6 +24,7 @@ namespace LifetimeFitness.ChallengeEngine.Core
 
         public bool IsQuestionable { get; set; }
 
+        [JsonIgnore]
         public virtual User User { get; set; }
     }
 }

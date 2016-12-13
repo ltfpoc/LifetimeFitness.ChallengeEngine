@@ -8,6 +8,7 @@ using System.Web.Http;
 
 namespace LifetimeFitness.ChallengeEngine.API.Controllers
 {
+    [Authorize]
     [RoutePrefix("api/Challenge")]
     public class ChallengeController : ApiController
     {
@@ -20,6 +21,28 @@ namespace LifetimeFitness.ChallengeEngine.API.Controllers
             try
             {
                 var entity = await _ChallengeProvider.GetAll();
+                if (entity != null)
+                {
+                    return Request.CreateResponse(HttpStatusCode.OK, entity);
+                }
+                else
+                {
+                    return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Challenge not found");
+                }
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
+            }
+        }
+
+        [HttpGet]
+        [Route("GetChallenges/Category/{categoryid}/Club/{clubid}")]
+        public async Task<HttpResponseMessage> GetChallengesByCategoryClub(int categoryid, int clubid)
+        {
+            try
+            {
+                var entity = await _ChallengeProvider.GetChallanges(categoryid, clubid);
                 if (entity != null)
                 {
                     return Request.CreateResponse(HttpStatusCode.OK, entity);
@@ -58,7 +81,6 @@ namespace LifetimeFitness.ChallengeEngine.API.Controllers
         }
 
         [Route("PostChallenge")]
-        // POST api/values
         public HttpResponseMessage PostChallenge([FromBody]Challenge challenge)
         {
             try
@@ -71,19 +93,6 @@ namespace LifetimeFitness.ChallengeEngine.API.Controllers
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
             }
         }
-        // POST: api/Challenge
-        public void Post([FromBody]string value)
-        {
-        }
 
-        // PUT: api/Challenge/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE: api/Challenge/5
-        public void Delete(int id)
-        {
-        }
     }
 }

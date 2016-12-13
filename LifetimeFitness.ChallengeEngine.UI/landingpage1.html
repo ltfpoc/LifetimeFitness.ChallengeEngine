@@ -162,7 +162,7 @@
                                             ng-options="category.ChallengeTypeId as
                                         category.ChallengeTypeTitle for category in eCategorylist track by category.ChallengeTypeId"
                                             class="form-control">
-                                        <option>Select Category</option>
+                                        <option value="">Select Category</option>
                                     </select>
                                     <!--<select class="form-control">
                                         <option>Select Category</option>
@@ -172,7 +172,7 @@
                                 <div class="col-md-5">
                                     <select ng-change="getChallenge(myChallengeValue)" ng-model="myChallengeValue"
                                             ng-options="challenge.ChallengeId as challenge.Name for challenge in eChallengelist track by challenge.ChallengeId" class="form-control">
-                                        <option>Select Challange</option>
+                                        <option value="">Select Challange</option>
                                     </select>
                                     <!--<select class="form-control">
                                         <option>Select Challange</option>
@@ -201,7 +201,7 @@
                                     <select ng-model="myUserValue"
                                             ng-options="users.UserId as (users.FirstName+ ' ' + users.LastName) for users in eUserlist track by users.UserId"
                                             class="form-control">
-                                        <option>Select Members</option>
+                                        <option value="">Select Members</option>
                                     </select>
                                     <!--<select class="form-control">
         <option>Select Members</option>
@@ -503,7 +503,7 @@
                                                 ng-options="category.ChallengeTypeId as
                                         category.ChallengeTypeTitle for category in eCategorylist track by category.ChallengeTypeId"
                                                 class="form-control">
-                                            <option>Select Category</option>
+                                            <option value="">Select Category</option>
                                         </select>
                                         <!--<select class="form-control">
                                             <option>Select Category</option>
@@ -513,7 +513,7 @@
                                     <div class="col-md-6">
                                         <select ng-model="myeChallengeValue"
                                                 ng-options="challenge.ChallengeId as challenge.Name for challenge in eChallengelist track by challenge.ChallengeId" class="form-control">
-                                            <option>Select Challange</option>
+                                            <option value="">Select Challange</option>
                                         </select>
                                         <!--<select class="form-control">
                                             <option>Select Challange</option>

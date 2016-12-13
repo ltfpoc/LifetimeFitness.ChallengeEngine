@@ -46,32 +46,32 @@ namespace LifetimeFitness.ChallengeEngine.API.Tests.Controllers
             }
         }
 
-        [TestMethod]
-        public async Task GetChallengeById()
-        {
-            try
-            {
-                // Arrange
-                ChallengeController controller = new ChallengeController();
-                controller.Request = new HttpRequestMessage();
-                controller.Request.Properties.Add(HttpPropertyKeys.HttpConfigurationKey, new HttpConfiguration());
-                // Act
-                ChallengeProvider _ChallengeProvider = new ChallengeProvider();
-                var testProducts = await _ChallengeProvider.GetById(1) as Challenge;
-                // Act
-                var response = await controller.GetChallenges(1) as HttpResponseMessage;
-                ObjectContent objContent = response.Content as ObjectContent;
-                Challenge picklistItem = objContent.Value as Challenge;
-                // Assert
-                Assert.IsNotNull(response);
-                Assert.AreEqual(testProducts, picklistItem);
-            }
-            catch (Exception ex)
-            {
+        //[TestMethod]
+        //public async Task GetChallengeById()
+        //{
+        //    try
+        //    {
+        //        // Arrange
+        //        ChallengeController controller = new ChallengeController();
+        //        controller.Request = new HttpRequestMessage();
+        //        controller.Request.Properties.Add(HttpPropertyKeys.HttpConfigurationKey, new HttpConfiguration());
+        //        // Act
+        //        ChallengeProvider _ChallengeProvider = new ChallengeProvider();
+        //        var testProducts = await _ChallengeProvider.GetById(1) as Challenge;
+        //        // Act
+        //        var response = await controller.GetChallenges(1) as HttpResponseMessage;
+        //        ObjectContent objContent = response.Content as ObjectContent;
+        //        Challenge picklistItem = objContent.Value as Challenge;
+        //        // Assert
+        //        Assert.IsNotNull(response);
+        //        Assert.AreEqual(testProducts, picklistItem);
+        //    }
+        //    catch (Exception ex)
+        //    {
 
-                throw ex;
-            }
-        }
+        //        throw ex;
+        //    }
+        //}
 
         [TestMethod]
         public void PostChallenge()

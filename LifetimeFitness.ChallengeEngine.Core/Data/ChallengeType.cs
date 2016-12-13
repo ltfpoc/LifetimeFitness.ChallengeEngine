@@ -3,6 +3,7 @@ namespace LifetimeFitness.ChallengeEngine.Core
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using Newtonsoft.Json;
     
 
     public class ChallengeType
@@ -20,7 +21,7 @@ namespace LifetimeFitness.ChallengeEngine.Core
 
         public string ChallengeTypeDescription { get; set; }
 
-
+        [JsonIgnore]
         public virtual ICollection<Challenge> Challenges { get; set; }
     }
 }

@@ -10,6 +10,7 @@ using System.Web.Http;
 
 namespace LifetimeFitness.ChallengeEngine.API.Controllers
 {
+    [Authorize]
     [RoutePrefix("api/Enrollment")]
     public class EnrollmentController : ApiController
     {

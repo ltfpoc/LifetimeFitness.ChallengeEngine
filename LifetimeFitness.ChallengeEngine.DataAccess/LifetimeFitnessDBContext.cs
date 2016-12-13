@@ -8,7 +8,7 @@ namespace LifetimeFitness.ChallengeEngine.DataAccess
         public LifetimeFitnessDBContext()
             : base("name=LifetimeFitnessDBContext")
         {
-            this.Configuration.LazyLoadingEnabled = false;
+            this.Configuration.LazyLoadingEnabled = true;
             this.Database.Log = s => System.Diagnostics.Debug.WriteLine(s);
         }
 

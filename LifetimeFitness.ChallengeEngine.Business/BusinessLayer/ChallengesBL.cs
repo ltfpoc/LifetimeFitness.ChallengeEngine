@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LifetimeFitness.ChallengeEngine.Business.BusinessLayer
+namespace LifetimeFitness.ChallengeEngine.Business
 {
-    class ChallengesBL
+    public class ChallengesBL
     {
         private readonly ChallengeProvider _challengestore;
-        private readonly ClubProvider _clubstore;
+        private readonly ClubProvider _clubstore;        
 
         public ChallengesBL()
         {

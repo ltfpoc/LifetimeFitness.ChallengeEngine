@@ -53,11 +53,11 @@ namespace LifetimeFitness.ChallengeEngine.Business
             return await challengeRepository.GetAllBy(filter, orderBy);
         }
 
-        public IEnumerable<Challenge> GetChallanges(int _CategoryId, int _ClubId)
+        public async Task<IEnumerable<Challenge>> GetChallanges(int _CategoryId, int _ClubId)
         {
-            var entity = GetAll().Result.ToList()
+            var entity = await GetAll();
+            return entity.Where(c => c.ChallengeTypeId == _CategoryId).ToList()
                         .Where(a => a.ChallengeClubRelations.Any(b => b.ClubId == _ClubId));
-            return entity;
 
         }
     }

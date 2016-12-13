@@ -18,7 +18,13 @@ namespace LifetimeFitness.ChallengeEngine.API
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            
+            //GlobalConfiguration.Configure(
+            //               config =>
+            //               {
+            //                   WebApiConfig.Register(config);                               
+            //                   RouteConfig.RegisterRoutes(RouteTable.Routes);
+            //               });
+
         }
         protected void Application_BeginRequest()
         {
