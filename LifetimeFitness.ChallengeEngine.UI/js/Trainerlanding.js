@@ -43,9 +43,9 @@ app.controller('myenroll', function ($scope, $http, $rootScope) {
             UserId: selectedUserId.UserId,
             ChallengeId :myChallengeValue  
         };
-        console.log(data);
+        console.log(selectedUserId.UserId);
         
-        $http.post(baseUri + 'api/Enrollment/PostEnrollment', data).then(function (response) {
+        $http.post('http://localhost:56507/api/Enrollment/PostEnrollment', data).then(function (response) {
             if (response.data)
                 $scope.msg = "Post Data Submitted Successfully!";
             alert('User enrollment for challenge is successfull');
