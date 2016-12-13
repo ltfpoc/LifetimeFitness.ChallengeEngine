@@ -8,10 +8,10 @@ app.controller('myenroll', function ($scope, $http, $rootScope, $window) {
     $scope.eChallengelist = [];
     $scope.eUserlist = [];
     $scope.eClublist = [];
+    $scope.myClubValue = 5;
     $scope.UserChalist = [];
     $scope.myClubValue = 5;
     $http.get(baseUri + "api/Club/GetClub").then(function (responses) {
-        console.log(myClubValue);
         $scope.eClublist = responses.data;
         //$scope.myClubValue = $window.localStorageService.get("clubname");
     });
@@ -34,6 +34,11 @@ app.controller('myenroll', function ($scope, $http, $rootScope, $window) {
             $scope.eChallengelist = responses.data;
             $scope.myeChallengeValue = $scope.eChallengelist;
         });
+    }
+    $scope.GetSelectin = function ()
+    {
+        $scope.myeCategoryValue = $scope.myCategoryValue;
+        $scope.myeChallengeValue = $scope.myChallengeValue;
     }
 
     $http.get(baseUri + "api/User/GetUsers").then(function (responses) {
