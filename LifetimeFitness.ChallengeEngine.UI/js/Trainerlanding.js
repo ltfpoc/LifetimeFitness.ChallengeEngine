@@ -1,6 +1,6 @@
 ﻿var app = angular.module('ltfAppTrainer', []);
 
-app.controller('myenroll', function ($scope, $http,$window, $rootScope) {
+app.controller('myenroll', function ($scope, $http, $rootScope, $window) {
 
     var baseUri = "http://localhost:56507/";
 
@@ -10,10 +10,10 @@ app.controller('myenroll', function ($scope, $http,$window, $rootScope) {
     $scope.eClublist = [];
     $scope.myClubValue = 5;
     $scope.UserChalist = [];
+    $scope.myClubValue = 5;
     $http.get(baseUri + "api/Club/GetClub").then(function (responses) {
         $scope.eClublist = responses.data;
-        var clubs = $window.localStorageService.get("clubname");
-        $scope.myClubValue = clubs;
+        //$scope.myClubValue = $window.localStorageService.get("clubname");
     });
     $http.get(baseUri + "api/Category/GetCategory").then(function (responses) {
         $scope.eCategorylist = responses.data;
@@ -25,6 +25,14 @@ app.controller('myenroll', function ($scope, $http,$window, $rootScope) {
             console.log(responses);
             $scope.eChallengelist = responses.data;
             $scope.myChallengeValue = $scope.eChallengelist;
+        });
+    }
+    $scope.GetChallengesPopup = function () {
+        var myparam = "Category/" + $scope.myeCategoryValue + '/Club/' + $scope.myClubValue;
+        $http.get(baseUri + "api/Challenge/GetChallenges/" + myparam).then(function (responses) {
+            console.log(responses);
+            $scope.eChallengelist = responses.data;
+            $scope.myeChallengeValue = $scope.eChallengelist;
         });
     }
     $scope.GetSelectin = function ()
@@ -39,8 +47,8 @@ app.controller('myenroll', function ($scope, $http,$window, $rootScope) {
         $scope.myUserValue = $scope.eUserlist[0];
     });
     $scope.GetUsersNotInChallenge = function () {
-        $http.get(baseUri + "api/GetUsers/Challenge/" + $scope.myChallengeValue).then(function (responses) {
-            console.log(responses);
+        $http.get(baseUri + "api/Challenge/GetUsers/Challenge/" + $scope.myeChallengeValue).then(function (responses) {
+            console.log(baseUri + "api/Challenge/GetUsers/" + $scope.myeChallengeValue);
             $scope.UserChalist = responses.data;
             $scope.myUserValue = $scope.UserChalist[0];
         });
@@ -51,11 +59,12 @@ app.controller('myenroll', function ($scope, $http,$window, $rootScope) {
         console.log(idSelected);
     }
 
-    $scope.enrollUser = function (myCategoryValue, myChallengeValue, selectedUserId) {
+    $scope.enrollUser = function (myCategoryValue, myChallengeValue, selectedUserId, myClubValue) {
 
         var data = {
             UserId: selectedUserId.UserId,
-            ChallengeId: myChallengeValue
+            ChallengeId: myChallengeValue,
+            ClubId : myClubValue
         };
         console.log(selectedUserId.UserId);
 

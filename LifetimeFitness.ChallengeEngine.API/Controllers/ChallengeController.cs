@@ -95,6 +95,27 @@ namespace LifetimeFitness.ChallengeEngine.API.Controllers
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
             }
         }
+        [HttpGet]
+        [Route("GetChallengeClubRelationship/Club/{clubid}/Challenge/{challengeId}")]
+        public async Task<HttpResponseMessage> GetChallengeClubRelationship(int clubId, int challengeId)
+        {
+            try
+            {
+                var entity = await _ChallengeClubRelationProvider.GetChallengeClubRelationship(clubId, challengeId);
+                if (entity != null)
+                {
+                    return Request.CreateResponse(HttpStatusCode.OK, entity);
+                }
+                else
+                {
+                    return Request.CreateErrorResponse(HttpStatusCode.NotFound, "ChallengeClubRelationship not found");
+                }
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
+            }
+        }
 
     }
 }
