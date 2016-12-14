@@ -6,7 +6,7 @@ app.controller('ClubCtrl', function ($scope, $http, $location, $log, $window) {
     $scope.clubslist = [];
     $http({
         method: 'GET',
-        url:'http://localhost:56507/api/Club/GetClub'
+        url: 'http://localhost:56507/api/Club/GetClub'
     }).success(function (result) {
         console.log(result);
         $scope.clubslist = result;
@@ -14,11 +14,18 @@ app.controller('ClubCtrl', function ($scope, $http, $location, $log, $window) {
     $scope.shareClub = function (myClubValue) {
         //$window.localStorageService.set("clubname", myClubValue);
         var url = "http://" + $window.location.host + "/landingpage1.html";
-        var clubitem = $window.localStorage.getItem("clubname")
-        if (clubitem != "") {
-            $window.localStorage.remove("clubname");
+        console.log("Checl1");
+        if ($window.localStorage.getItem("clubname") === null) {
+            console.log("Checl11");
+            $window.localStorage.setItem("clubname", myClubValue);
         }
-        $window.localStorage.setItem("clubname", myClubValue);
+        else {
+            console.log("Checl12");
+            $window.localStorage.remove("clubname");
+            $window.localStorage.setItem("clubname", myClubValue);
+            console.log("Checl13");
+        }
+        console.log("Checl14");
         $window.location.href = url;
     };
     console.log($scope);
