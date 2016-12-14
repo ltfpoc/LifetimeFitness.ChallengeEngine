@@ -1,11 +1,12 @@
 ﻿var app = angular.module('ltfApp', ['ngRoute', 'LocalStorageModule']);
 
 
+
 app.controller('ClubCtrl', function ($scope, $http, $location, $log, $window) {
     $scope.clubslist = [];
     $http({
         method: 'GET',
-        url: serviceUri + 'api/Club/GetClub'
+        url:'http://localhost:56507/api/Club/GetClub'
     }).success(function (result) {
         console.log(result);
         $scope.clubslist = result;
@@ -24,20 +25,6 @@ app.controller('ClubCtrl', function ($scope, $http, $location, $log, $window) {
 });
 
 
-
-//app.config(function ($routeProvider) {
-
-//    $routeProvider.when("/trainerLanding", {
-//        templateUrl: serviceUri + "landingpage1.html"
-//    });
-
-//    $routeProvider.when("/login", {
-//        controller: "loginController",
-//        templateUrl: "/app/views/login.html"
-//    });
-
-//    $routeProvider.otherwise({ redirectTo: "/home" });
-//});
 
 app.run(['authService', function (authService) {
     authService.fillAuthData();
