@@ -60,32 +60,24 @@ namespace LifetimeFitness.ChallengeEngine.Business
             UserChallengeEnrollmentProvider _UserChallengeEnrollmentProvider = new Business.UserChallengeEnrollmentProvider();
             var userchallenge = await _UserChallengeEnrollmentProvider.GetAll();
             ChallengeClubRelationProvider _userChallengeEnrollmentProvider = new ChallengeClubRelationProvider();
-            var challengeClubRelationship = await _userChallengeEnrollmentProvider.FindBy(a => a.ClubId != _clubId && a.ChallengeId != _ChallengeId);
+            var challengeClubRelationship = await _userChallengeEnrollmentProvider.GetAll();
             var entity = await GetAll();
-            if (userchallenge != null)
-            {
-                if (challengeClubRelationship != null)
-                {
-                    userchallenge = from a in userchallenge
-                                    from b in challengeClubRelationship
-                                    where a.ChallengeClubRelationId != b.ChallengeClubRelationId
-                                    select a;
-
-                }
-                if (userchallenge != null)
-                    entity = entity.Where(a => userchallenge.Any(b => b.UserId != a.UserId));
-            }
-            List<int> lstRoles = new List<int>() { 1, 2 };
-            entity = entity.Where(a => !lstRoles.Any(b => b.ToString().Equals(Convert.ToString(a.RoleId))));
+            var getcheck = (from a in userchallenge
+                            join b in challengeClubRelationship
+                            on a.ChallengeClubRelationId equals b.ChallengeClubRelationId
+                            where a.ChallengeId == _ChallengeId && b.ClubId == _clubId
+                            select a);
             var uentity = (from a in entity
+                           from b in getcheck
+                           where a.UserId != b.UserId
+                           && a.RoleId == 3
                            select new Userd
                            {
                                UserId = a.UserId,
                                Name = a.FirstName + " " + a.LastName,
                                UserName = a.UserName,
                                UserRole = a.UserRole.Description
-                           }
-                      ).ToList();
+                           }).Distinct();
             return uentity;
         }
 

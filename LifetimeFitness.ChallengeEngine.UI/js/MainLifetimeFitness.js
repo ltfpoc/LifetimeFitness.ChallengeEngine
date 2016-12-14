@@ -21,7 +21,7 @@ app.controller('ClubCtrl', function ($scope, $http, $location, $log, $window) {
         }
         else {
             console.log("Checl12");
-            $window.localStorage.remove("clubname");
+            $window.localStorage.removeItem("clubname");
             $window.localStorage.setItem("clubname", myClubValue);
             console.log("Checl13");
         }

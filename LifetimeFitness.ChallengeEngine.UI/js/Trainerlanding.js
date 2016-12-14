@@ -65,7 +65,7 @@ app.controller('myenroll', function ($scope, $http, $rootScope, $window) {
 
     $scope.enrollUser = function (myCategoryValue, myChallengeValue, selectedUserId, myClubValue) {
         //"api/Challenge/GetChallengeClubRelationship/Club/{clubid}/Challenge/{challengeId}")
-         
+         debugger;
         $http.get(baseUri + "api/Challenge/GetChallengeClubRelationship/Club/" + $scope.myClubValue + "/Challenge/" + $scope.myeChallengeValue).then(function (responses) {
             $scope.challengeClubRelationshipId = responses.data.ChallengeClubRelationId;
             //$scope.myUserValue = $scope.UserChalist[0];
@@ -74,7 +74,7 @@ app.controller('myenroll', function ($scope, $http, $rootScope, $window) {
         var data = {
             UserId: selectedUserId.UserId,
             ChallengeId: myChallengeValue,
-            ChallengeClubRelationId : challengeClubRelationshipId
+            ChallengeClubRelationId :  $scope.challengeClubRelationshipId
         };
         console.log(selectedUserId.UserId);
 
@@ -82,6 +82,7 @@ app.controller('myenroll', function ($scope, $http, $rootScope, $window) {
             if (response.data)
                 $scope.msg = "Post Data Submitted Successfully!";
             alert('User enrollment for challenge is successfull');
+            debugger;
             $scope.GetUsersNotInChallenge();
 
         }, function (response) {
