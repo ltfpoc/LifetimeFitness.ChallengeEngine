@@ -18,7 +18,7 @@ namespace LifetimeFitness.ChallengeEngine.API.Tests.Controllers
     public class UserControllerTest
     {
         [TestMethod]
-        public  async Task  GetAllUser()
+        public async Task GetAllUser()
         {
             try
             {
@@ -26,18 +26,18 @@ namespace LifetimeFitness.ChallengeEngine.API.Tests.Controllers
                 UserController controller = new UserController();
                 controller.Request = new HttpRequestMessage();
                 controller.Request.Properties.Add(HttpPropertyKeys.HttpConfigurationKey, new HttpConfiguration());
-                
+
                 // Act
                 UserProvider _UserProvider = new UserProvider();
                 var listUsers = await _UserProvider.GetAll() as List<User>;
                 int count = listUsers.Count;
-                
+
                 // Act
                 var response = await controller.GetUsers() as HttpResponseMessage;
                 ObjectContent objContent = response.Content as ObjectContent;
                 List<User> picklistItem = objContent.Value as List<User>;
                 int icount = picklistItem.Count;
-                
+
                 // Assert
                 Assert.IsNotNull(response);
                 Assert.AreEqual(count, icount);
@@ -59,7 +59,29 @@ namespace LifetimeFitness.ChallengeEngine.API.Tests.Controllers
                 controller.Request = new HttpRequestMessage();
                 controller.Request.Properties.Add(HttpPropertyKeys.HttpConfigurationKey, new HttpConfiguration());
 
-                var response =  await controller.SearchUser("Ltf") as HttpResponseMessage;
+                var response = await controller.SearchUser("Ltf") as HttpResponseMessage;
+                // Assert
+                Assert.IsNotNull(response);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        [TestMethod]
+        public async Task GetUsersNotInChallenge()
+        {
+            try
+            {
+                // Arrange
+                UserProvider _userProvider = new UserProvider();
+                //controller.Request = new HttpRequestMessage();
+                //controller.Request.Properties.Add(HttpPropertyKeys.HttpConfigurationKey, new HttpConfiguration());
+
+                var response = await _userProvider.GetUsersNotInChallenge(2, 5) as HttpResponseMessage;
+                
                 // Assert
                 Assert.IsNotNull(response);
             }

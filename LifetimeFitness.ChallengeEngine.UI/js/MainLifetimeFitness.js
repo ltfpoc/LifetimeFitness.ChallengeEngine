@@ -5,7 +5,7 @@ app.controller('ClubCtrl', function ($scope, $http, $location, $log, $window) {
     $scope.clubslist = [];
     $http({
         method: 'GET',
-        url:  serviceUri + 'api/Club/GetClub'
+        url: serviceUri + 'api/Club/GetClub'
     }).success(function (result) {
         console.log(result);
         $scope.clubslist = result;
@@ -13,7 +13,11 @@ app.controller('ClubCtrl', function ($scope, $http, $location, $log, $window) {
     $scope.shareClub = function (myClubValue) {
         //$window.localStorageService.set("clubname", myClubValue);
         var url = "http://" + $window.location.host + "/landingpage1.html";
-        $window.localStorageService.set("clubname", myClubValue);
+        var clubitem = $window.localStorage.getItem("clubname")
+        if (clubitem != "") {
+            $window.localStorage.remove("clubname");
+        }
+        $window.localStorage.setItem("clubname", myClubValue);
         $window.location.href = url;
     };
     console.log($scope);

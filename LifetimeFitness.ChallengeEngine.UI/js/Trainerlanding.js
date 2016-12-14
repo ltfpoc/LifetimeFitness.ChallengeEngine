@@ -10,12 +10,13 @@ app.controller('myenroll', function ($scope, $http, $rootScope, $window) {
     $scope.eClublist = [];
     $scope.myClubValue = 5;
     $scope.UserChalist = [];
-    $scope.myClubValue = 5;
+    //$window.localStorage.setItem("clubname",5);
     $scope.challengeClubRelationshipId = 0;
 
     $http.get(baseUri + "api/Club/GetClub").then(function (responses) {
         $scope.eClublist = responses.data;
-        $scope.myClubValue = $window.localStorageService.get("clubname");
+        var getclub = $window.localStorage.getItem("clubname");
+        $scope.myClubValue = getclub;// $window.localStorageService.get("clubname");
     });
     $http.get(baseUri + "api/Category/GetCategory").then(function (responses) {
         $scope.eCategorylist = responses.data;
@@ -40,19 +41,18 @@ app.controller('myenroll', function ($scope, $http, $rootScope, $window) {
     $scope.GetSelectin = function ()
     {
         $scope.myeCategoryValue = $scope.myCategoryValue;
-        console.log($scope.myeCategoryValue);
         $scope.myeChallengeValue = $scope.myChallengeValue;
     }
 
     $http.get(baseUri + "api/User/GetUsers").then(function (responses) {
-        console.log(responses);
+        
         $scope.eUserlist = responses.data;
         $scope.myUserValue = $scope.eUserlist[0];
     });
     $scope.GetUsersNotInChallenge = function () {
-        //console
-        $http.get(baseUri + "api/Challenge/GetUsers/Challenge/" + $scope.myeChallengeValue + "/Club/" + $scope.myClubValue).then(function (responses) {
-            console.log(baseUri + "api/Challenge/GetUsers/" + $scope.myeChallengeValue);
+        console.log("Pritesh");
+        $http.get(baseUri + "api/User/GetUsers/Challenge/" + $scope.myeChallengeValue + "/Club/" + $scope.myClubValue).then(function (responses) {
+            console.log(baseUri + "api/User/GetUsers/Challenge/" + $scope.myeChallengeValue + "/Club/" + $scope.myClubValue);
             $scope.UserChalist = responses.data;
             $scope.myUserValue = $scope.UserChalist[0];
         });
@@ -82,6 +82,7 @@ app.controller('myenroll', function ($scope, $http, $rootScope, $window) {
             if (response.data)
                 $scope.msg = "Post Data Submitted Successfully!";
             alert('User enrollment for challenge is successfull');
+            $scope.GetUsersNotInChallenge();
 
         }, function (response) {
             $scope.msg = "Service not Exists";

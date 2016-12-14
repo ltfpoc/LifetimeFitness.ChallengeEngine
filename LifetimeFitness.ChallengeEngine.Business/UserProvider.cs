@@ -57,18 +57,27 @@ namespace LifetimeFitness.ChallengeEngine.Business
 
         public async Task<IEnumerable<Userd>> GetUsersNotInChallenge(int _ChallengeId, int _clubId)
         {
+            UserChallengeEnrollmentProvider _UserChallengeEnrollmentProvider = new Business.UserChallengeEnrollmentProvider();
+            var userchallenge = await _UserChallengeEnrollmentProvider.GetAll();
             ChallengeClubRelationProvider _userChallengeEnrollmentProvider = new ChallengeClubRelationProvider();
-            var challengeClubRelationship = await _userChallengeEnrollmentProvider.GetChallengeClubRelationship(_clubId, _ChallengeId);
-
-            HashSet<Userd> userlist = new HashSet<Userd>();
-            List<string> lstRoles = new List<string>() { "Admin", "Trainer" };
+            var challengeClubRelationship = await _userChallengeEnrollmentProvider.FindBy(a => a.ClubId != _clubId && a.ChallengeId != _ChallengeId);
             var entity = await GetAll();
-            UserRoleProvider _UserRoleProvider = new UserRoleProvider();
-            var entiryRoles = await _UserRoleProvider.GetAll();
-            entity = entity.Where(a => a.UserChallengeEnrollments.Any(b => b.ChallengeClubRelationId != challengeClubRelationship.ChallengeClubRelationId));
+            if (userchallenge != null)
+            {
+                if (challengeClubRelationship != null)
+                {
+                    userchallenge = from a in userchallenge
+                                    from b in challengeClubRelationship
+                                    where a.ChallengeClubRelationId != b.ChallengeClubRelationId
+                                    select a;
+
+                }
+                if (userchallenge != null)
+                    entity = entity.Where(a => userchallenge.Any(b => b.UserId != a.UserId));
+            }
+            List<int> lstRoles = new List<int>() { 1, 2 };
+            entity = entity.Where(a => !lstRoles.Any(b => b.ToString().Equals(Convert.ToString(a.RoleId))));
             var uentity = (from a in entity
-                           join b in entiryRoles.Where(i => !lstRoles.Contains(i.Description))
-                           on a.RoleId equals b.RoleId
                            select new Userd
                            {
                                UserId = a.UserId,
