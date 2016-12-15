@@ -62,7 +62,6 @@ app.controller('myenroll', function ($scope, $http, $rootScope, $window) {
             console.log(responses.data);
             $scope.UserChalist = [];
             $scope.UserChalist = responses.data;
-            $scope.myUserValue = $scope.UserChalist[0];
         });
     }
     $scope.selectedUserId = null;
@@ -80,7 +79,7 @@ app.controller('myenroll', function ($scope, $http, $rootScope, $window) {
         var data = {
             UserId: selectedUserId.UserId,
             ChallengeId: myChallengeValue,
-            ChallengeClubRelationId: $scope.challengeClubRelationshipId
+            ClubId: myClubValue
         };
         console.log(selectedUserId.UserId);
 

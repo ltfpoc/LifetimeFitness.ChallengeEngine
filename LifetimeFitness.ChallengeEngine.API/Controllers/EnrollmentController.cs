@@ -1,5 +1,6 @@
 ﻿using LifetimeFitness.ChallengeEngine.Business;
 using LifetimeFitness.ChallengeEngine.Core;
+using LifetimeFitness.ChallengeEngine.Core.Domin;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,7 @@ namespace LifetimeFitness.ChallengeEngine.API.Controllers
         UserChallengeEnrollmentProvider _userChallengeEnrollmentProvider = new UserChallengeEnrollmentProvider();
         [Route("PostEnrollment")]
         // POST api/values
-        public HttpResponseMessage PostEnrollment([FromBody]UserChallengeEnrollment userChallengeEnrollment)
+        public HttpResponseMessage PostEnrollment([FromBody]Enrollment userChallengeEnrollment)
         {
             try
             {

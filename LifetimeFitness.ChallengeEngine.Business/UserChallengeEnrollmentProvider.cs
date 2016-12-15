@@ -1,4 +1,5 @@
 ﻿using LifetimeFitness.ChallengeEngine.Core;
+using LifetimeFitness.ChallengeEngine.Core.Domin;
 using LifetimeFitness.ChallengeEngine.DataAccess;
 using System;
 using System.Collections.Generic;
@@ -18,19 +19,33 @@ namespace LifetimeFitness.ChallengeEngine.Business
         {
             userChallengeEnrollmentProviderRepository = unitOfWork.Repository<UserChallengeEnrollment>();
         }
+
+        public int Insert(Enrollment _enrollment)
+        {
+            ChallengeClubRelationProvider _ChallengeClubRelationProvider = new ChallengeClubRelationProvider();
+            var entity = _ChallengeClubRelationProvider.GetChallengeClubRelationship(_enrollment.ClubId, _enrollment.ChallengeId).Result;
+            _enrollment.ChallengeClubRelationId = entity.ChallengeClubRelationId;
+            UserChallengeEnrollment _userClubEnrollment = new UserChallengeEnrollment();
+            _userClubEnrollment.UserId = _enrollment.UserId;
+            _userClubEnrollment.ChallengeId = _enrollment.ChallengeId;
+            _userClubEnrollment.ChallengeClubRelationId = _enrollment.ChallengeClubRelationId;
+            return Insert(_userClubEnrollment);
+        }
+
+
         public int Insert(UserChallengeEnrollment _userChallengeEnrollment)
         {
-           return userChallengeEnrollmentProviderRepository.Insert(_userChallengeEnrollment);
+            return userChallengeEnrollmentProviderRepository.Insert(_userChallengeEnrollment);
         }
 
         public int Update(UserChallengeEnrollment _userChallengeEnrollment)
         {
-          return  userChallengeEnrollmentProviderRepository.Update(_userChallengeEnrollment);
+            return userChallengeEnrollmentProviderRepository.Update(_userChallengeEnrollment);
         }
 
         public int Delete(UserChallengeEnrollment _userChallengeEnrollment)
         {
-           return userChallengeEnrollmentProviderRepository.Delete(_userChallengeEnrollment);
+            return userChallengeEnrollmentProviderRepository.Delete(_userChallengeEnrollment);
         }
 
 

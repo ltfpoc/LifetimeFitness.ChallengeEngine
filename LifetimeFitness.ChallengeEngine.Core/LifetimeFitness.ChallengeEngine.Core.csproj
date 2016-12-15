@@ -55,6 +55,7 @@
     <Compile Include="Data\UserChallengeEnrollment.cs" />
     <Compile Include="Data\UserClubEnrollment.cs" />
     <Compile Include="Data\UserRole.cs" />
+    <Compile Include="Domin\Enrollment.cs" />
     <Compile Include="Domin\Userd.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
