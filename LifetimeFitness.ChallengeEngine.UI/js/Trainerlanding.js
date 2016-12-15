@@ -74,18 +74,19 @@ app.controller('myenroll', function ($scope, $http, $rootScope, $window) {
             $scope.challengeClubRelationshipId = responses.data.ChallengeClubRelationId;
         });
     }
-    $scope.enrollUser = function (myCategoryValue, myChallengeValue, selectedUserId, myClubValue) {
+    $scope.enrollUser = function (myCategoryValue, myChallengeValue, myClubValue) {
         var data = {
-            UserId: selectedUserId.UserId,
+            UserId: $scope.selectedUserId,
             ChallengeId: $scope.myeChallengeValue,
             ClubId: myClubValue
         };
         console.log(selectedUserId.UserId);
 
         $http.post('http://localhost:56507/api/Enrollment/PostEnrollment', data).then(function (response) {
-            if (response.data)
-                $scope.msg = "Post Data Submitted Successfully!";
-            alert('User enrollment for challenge is successfull');
+            if (response.data) {
+                alert('User enrollment for challenge is successfull');
+                $scope.GetUsersNotInChallenge();
+            }
         }, function (response) {
             $scope.msg = "Service not Exists";
             $scope.statusval = response.status;
