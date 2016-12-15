@@ -574,7 +574,7 @@
                                         <input ng-model="userValue" type="text" class="form-control" id="searchtype" placeholder="Search">
                                     </div>
                                 </div>
-                                <button type="submit" ng-click="enrollUser(myCategoryValue,myChallengeValue,myUserValue,myClubValue);GetUsersNotInChallenge()" class="btn btn-primary">+</button>
+                                <button type="submit" ng-click="enrollUser(myeCategoryValue,myeChallengeValue,myUserValue,myClubValue);GetUsersNotInChallenge()" class="btn btn-primary">+</button>
                             </form>
                             <ul class="list-unstyled search_user_list marTop40px">
                                 <li ng-repeat="users in UserChalist | filter:userValue" ng-click="setSelectedUserId(users.UserId)" ng-class="{selectedUser : users.UserId === selectedUserId}">

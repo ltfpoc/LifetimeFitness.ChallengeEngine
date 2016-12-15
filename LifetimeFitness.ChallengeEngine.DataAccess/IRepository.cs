@@ -13,6 +13,7 @@ namespace LifetimeFitness.ChallengeEngine.DataAccess
         int Insert(TEntity entity);
         int Update(TEntity entity);
         int Delete(TEntity entity);
+        ICollection<TEntity> FindBySync(Expression<Func<TEntity, bool>> predicate);
         Task<int> InsertAsync(TEntity entity);
         Task<int> UpdateAsync(TEntity entity);
         Task<int> DeleteAsync(TEntity entity);

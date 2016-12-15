@@ -23,7 +23,7 @@ namespace LifetimeFitness.ChallengeEngine.Business
         public int Insert(Enrollment _enrollment)
         {
             ChallengeClubRelationProvider _ChallengeClubRelationProvider = new ChallengeClubRelationProvider();
-            var entity = _ChallengeClubRelationProvider.GetChallengeClubRelationship(_enrollment.ClubId, _enrollment.ChallengeId).Result;
+            var entity = _ChallengeClubRelationProvider.GetChallengeClubRelationshipSync(_enrollment.ClubId, _enrollment.ChallengeId);
             _enrollment.ChallengeClubRelationId = entity.ChallengeClubRelationId;
             UserChallengeEnrollment _userClubEnrollment = new UserChallengeEnrollment();
             _userClubEnrollment.UserId = _enrollment.UserId;

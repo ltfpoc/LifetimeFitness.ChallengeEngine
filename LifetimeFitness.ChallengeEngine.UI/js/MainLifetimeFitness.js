@@ -119,7 +119,7 @@ app.controller('LoginCtrl', ['$scope', '$location', 'authService','$window', fun
     $scope.login = function () {
         authService.login($scope.loginData).then(function (response) {
 
-            if (response.userRole == "Admin" || response.userRole == "Participant") {
+            if (response.userRole === "Admin" || response.userRole === "Participant") {
                 $("#login").hide();
                 $("#Choose_club").hide();
                 $("#Choose_admin").show();
