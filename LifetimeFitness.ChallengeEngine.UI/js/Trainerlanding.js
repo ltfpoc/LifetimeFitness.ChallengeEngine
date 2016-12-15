@@ -75,10 +75,9 @@ app.controller('myenroll', function ($scope, $http, $rootScope, $window) {
         });
     }
     $scope.enrollUser = function (myCategoryValue, myChallengeValue, selectedUserId, myClubValue) {
-        //$scope.GetChallengeClubRelation();
         var data = {
             UserId: selectedUserId.UserId,
-            ChallengeId: myChallengeValue,
+            ChallengeId: $scope.myeChallengeValue,
             ClubId: myClubValue
         };
         console.log(selectedUserId.UserId);

@@ -228,6 +228,11 @@ namespace LifetimeFitness.ChallengeEngine.DataAccess
             return result;
         }
 
+        public ICollection<TEntity> FindBySync(Expression<Func<TEntity, bool>> predicate)
+        {
+            return _context.Set<TEntity>().Where(predicate).ToList();
+        }
+
         private IDbSet<TEntity> Entities
         {
             get

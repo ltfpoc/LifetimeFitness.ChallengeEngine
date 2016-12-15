@@ -59,5 +59,15 @@ namespace LifetimeFitness.ChallengeEngine.Business
             var entity = await FindBy(c => c.ChallengeId == challengeId && c.ClubId == clubId);
             return entity.FirstOrDefault();
         }
+        public ICollection<ChallengeClubRelation> FindBySync(Expression<Func<ChallengeClubRelation, bool>> predicate)
+        {
+            return challengeClubRelationRepository.FindBySync(predicate);
+        }
+
+        public ChallengeClubRelation GetChallengeClubRelationshipSync(int clubId, int challengeId)
+        {
+            var entity = FindBySync(c => c.ChallengeId == challengeId && c.ClubId == clubId);
+            return entity.FirstOrDefault();
+        }
     }
 }
