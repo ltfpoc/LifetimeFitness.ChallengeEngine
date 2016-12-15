@@ -57,47 +57,53 @@ namespace LifetimeFitness.ChallengeEngine.Business
 
         public async Task<IEnumerable<Userd>> GetUsersNotInChallenge(int _ChallengeId, int _clubId)
         {
-            UserChallengeEnrollmentProvider _UserChallengeEnrollmentProvider = new Business.UserChallengeEnrollmentProvider();
-            var userchallenge = await _UserChallengeEnrollmentProvider.GetAll();
-            ChallengeClubRelationProvider _userChallengeEnrollmentProvider = new ChallengeClubRelationProvider();
-            var challengeClubRelationship = await _userChallengeEnrollmentProvider.GetAll();
-            var entity = await GetAll();
-            var getcheck = (
-                from u in entity
-                where !(from u1 in userchallenge.Where(a => a.ChallengeId == _ChallengeId)
-                        join c1 in challengeClubRelationship.Where(a => a.ClubId == _clubId)
-                        on u1.ChallengeClubRelationId equals c1.ChallengeClubRelationId
-                        select new
-                        {
-                            u1.UserId
-                        }).Contains(new { UserId = u.UserId }) &&
-                        u.RoleId == 3
-                select new Userd
-                {
-                    UserId = u.UserId,
-                    Name = u.FirstName + " " + u.LastName,
-                    UserName = u.UserName,
-                    UserRole = u.UserRole.Description
-                }
-                );
-            if (getcheck.Any())
+            if (!string.IsNullOrEmpty(Convert.ToString(_ChallengeId)) || !string.IsNullOrEmpty(Convert.ToString(_clubId)))
             {
-                return getcheck.ToList();
+                return null;
             }
             else
             {
-                var uentity = (from a in entity
-                               where a.RoleId == 3
-                               select new Userd
-                               {
-                                   UserId = a.UserId,
-                                   Name = a.FirstName + " " + a.LastName,
-                                   UserName = a.UserName,
-                                   UserRole = a.UserRole.Description
-                               }).Distinct();
-                return uentity.ToList();
+                UserChallengeEnrollmentProvider _UserChallengeEnrollmentProvider = new Business.UserChallengeEnrollmentProvider();
+                var userchallenge = await _UserChallengeEnrollmentProvider.GetAll();
+                ChallengeClubRelationProvider _userChallengeEnrollmentProvider = new ChallengeClubRelationProvider();
+                var challengeClubRelationship = await _userChallengeEnrollmentProvider.GetAll();
+                var entity = await GetAll();
+                var getcheck = (
+                    from u in entity
+                    where !(from u1 in userchallenge.Where(a => a.ChallengeId == _ChallengeId)
+                            join c1 in challengeClubRelationship.Where(a => a.ClubId == _clubId)
+                            on u1.ChallengeClubRelationId equals c1.ChallengeClubRelationId
+                            select new
+                            {
+                                u1.UserId
+                            }).Contains(new { UserId = u.UserId }) &&
+                            u.RoleId == 3
+                    select new Userd
+                    {
+                        UserId = u.UserId,
+                        Name = u.FirstName + " " + u.LastName,
+                        UserName = u.UserName,
+                        UserRole = u.UserRole.Description
+                    }
+                    );
+                if (getcheck.Any())
+                {
+                    return getcheck.ToList();
+                }
+                else
+                {
+                    var uentity = (from a in entity
+                                   where a.RoleId == 3
+                                   select new Userd
+                                   {
+                                       UserId = a.UserId,
+                                       Name = a.FirstName + " " + a.LastName,
+                                       UserName = a.UserName,
+                                       UserRole = a.UserRole.Description
+                                   }).Distinct();
+                    return uentity.ToList();
+                }
             }
-
         }
 
         public async Task<User> GetById(int _id)

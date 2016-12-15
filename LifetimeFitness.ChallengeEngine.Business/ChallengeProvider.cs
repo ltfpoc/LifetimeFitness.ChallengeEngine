@@ -20,7 +20,7 @@ namespace LifetimeFitness.ChallengeEngine.Business
 
         public int Insert(Challenge _Challenge)
         {
-           return  challengeRepository.Insert(_Challenge);
+            return challengeRepository.Insert(_Challenge);
         }
 
         public int Update(Challenge _Challenge)
@@ -55,14 +55,21 @@ namespace LifetimeFitness.ChallengeEngine.Business
 
         public async Task<IEnumerable<Challenge>> GetChallanges(int _CategoryId, int _ClubId)
         {
-            var entity = await GetAll();
-            entity = entity.Where(c => c.ChallengeTypeId == _CategoryId).ToList();
-            entity = from a in entity.Where(c => c.ChallengeTypeId == _CategoryId).ToList()
-                     from b in a.ChallengeClubRelations
-                     where b.ClubId == _ClubId
-                     select a;
-            return entity;
-                        //.Where(a => a.ChallengeClubRelations.Any(b => b.ClubId == _ClubId));
+            if (!string.IsNullOrEmpty(Convert.ToString(_CategoryId)) || !string.IsNullOrEmpty(Convert.ToString(_ClubId)))
+            {
+                return null;
+            }
+            else
+            {
+                var entity = await GetAll();
+                entity = entity.Where(c => c.ChallengeTypeId == _CategoryId).ToList();
+                entity = from a in entity.Where(c => c.ChallengeTypeId == _CategoryId).ToList()
+                         from b in a.ChallengeClubRelations
+                         where b.ClubId == _ClubId
+                         select a;
+                return entity;
+                //.Where(a => a.ChallengeClubRelations.Any(b => b.ClubId == _ClubId));
+            }
 
         }
     }

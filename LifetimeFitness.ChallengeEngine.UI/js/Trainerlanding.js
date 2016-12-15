@@ -53,10 +53,19 @@ app.controller('myenroll', function ($scope, $http, $rootScope, $window) {
         $scope.myUserValue = $scope.eUserlist[0];
     });
     $scope.GetUsersNotInChallenge = function () {
-        $http.get(baseUri + "api/User/GetUsers/Challenge/" + $scope.myeChallengeValue + "/Club/" + $scope.myClubValue).then(function (responses) {
+        
+        if ($scope.myeChallengeValue != "" && $scope.myClubValue != "")
+        {
+            $http.get(baseUri + "api/User/GetUsers/Challenge/" + $scope.myeChallengeValue + "/Club/" + $scope.myClubValue).then(
+            function (responses) {
+                $scope.UserChalist = [];
+                $scope.UserChalist = responses.data;
+            });
+        }
+        else
+        {
             $scope.UserChalist = [];
-            $scope.UserChalist = responses.data;
-        });
+        }
     }
     $scope.selectedUserId = null;
     $scope.setSelectedUserId = function (idSelected) {
