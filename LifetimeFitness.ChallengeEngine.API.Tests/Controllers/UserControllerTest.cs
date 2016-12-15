@@ -9,8 +9,7 @@ using System.Web.Http;
 using LifetimeFitness.ChallengeEngine.Core;
 using System.Collections.Generic;
 using System.Net;
-
-
+using LifetimeFitness.ChallengeEngine.Core.Domin;
 
 namespace LifetimeFitness.ChallengeEngine.API.Tests.Controllers
 {
@@ -80,9 +79,19 @@ namespace LifetimeFitness.ChallengeEngine.API.Tests.Controllers
                 //controller.Request = new HttpRequestMessage();
                 //controller.Request.Properties.Add(HttpPropertyKeys.HttpConfigurationKey, new HttpConfiguration());
 
-                var response = await _userProvider.GetUsersNotInChallenge(2, 5) as HttpResponseMessage;
-                
+                var response = await _userProvider.GetUsersNotInChallenge(4, 6) as List<Userd>;
+                int count = response.Count;
                 // Assert
+                UserController controller = new UserController();
+                controller.Request = new HttpRequestMessage();
+                controller.Request.Properties.Add(HttpPropertyKeys.HttpConfigurationKey, new HttpConfiguration());
+                var response1 = await controller.GetUsers(4, 6) as HttpResponseMessage;
+                ObjectContent objContent = response1.Content as ObjectContent;
+                List<Userd> picklistItem = objContent.Value as List<Userd>;
+                int icount = picklistItem.Count;
+
+                // Assert
+                Assert.AreEqual(count, icount);
                 Assert.IsNotNull(response);
             }
             catch (Exception ex)

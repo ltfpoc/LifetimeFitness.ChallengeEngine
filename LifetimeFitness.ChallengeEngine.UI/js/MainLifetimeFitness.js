@@ -12,20 +12,14 @@ app.controller('ClubCtrl', function ($scope, $http, $location, $log, $window) {
         $scope.clubslist = result;
     });
     $scope.shareClub = function (myClubValue) {
-        //$window.localStorageService.set("clubname", myClubValue);
         var url = "http://" + $window.location.host + "/landingpage1.html";
-        console.log("Checl1");
         if ($window.localStorage.getItem("clubname") === null) {
-            console.log("Checl11");
             $window.localStorage.setItem("clubname", myClubValue);
         }
         else {
-            console.log("Checl12");
             $window.localStorage.removeItem("clubname");
             $window.localStorage.setItem("clubname", myClubValue);
-            console.log("Checl13");
         }
-        console.log("Checl14");
         $window.location.href = url;
     };
     console.log($scope);
@@ -125,8 +119,17 @@ app.controller('LoginCtrl', ['$scope', '$location', 'authService', function ($sc
     $scope.login = function () {
         authService.login($scope.loginData).then(function (response) {
 
-            $("#login").hide();
-            $("#Choose_club").show();
+            if (response.userRole == "Admin" || response.userRole == "Participant") {
+                $("#login").hide();
+                $("#Choose_club").hide();
+                $("Choose_admin").show();
+            }
+            else { 
+                $("#login").hide();
+                $("Choose_admin").hide();
+                $("#Choose_club").show();
+            }
+            
 
         },
          function (err) {

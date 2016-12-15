@@ -56,8 +56,13 @@ namespace LifetimeFitness.ChallengeEngine.Business
         public async Task<IEnumerable<Challenge>> GetChallanges(int _CategoryId, int _ClubId)
         {
             var entity = await GetAll();
-            return entity.Where(c => c.ChallengeTypeId == _CategoryId).ToList()
-                        .Where(a => a.ChallengeClubRelations.Any(b => b.ClubId == _ClubId));
+            entity = entity.Where(c => c.ChallengeTypeId == _CategoryId).ToList();
+            entity = from a in entity.Where(c => c.ChallengeTypeId == _CategoryId).ToList()
+                     from b in a.ChallengeClubRelations
+                     where b.ClubId == _ClubId
+                     select a;
+            return entity;
+                        //.Where(a => a.ChallengeClubRelations.Any(b => b.ClubId == _ClubId));
 
         }
     }

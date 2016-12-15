@@ -8,15 +8,21 @@ app.controller('myenroll', function ($scope, $http, $rootScope, $window) {
     $scope.eChallengelist = [];
     $scope.eUserlist = [];
     $scope.eClublist = [];
-    $scope.myClubValue = 5;
     $scope.UserChalist = [];
-    //$window.localStorage.setItem("clubname",5);
     $scope.challengeClubRelationshipId = 0;
+    $scope.myClubValue = 0;
+    //if ($window.localStorage.getItem("clubname") === null) {
+    //    $window.localStorage.setItem("clubname", myClubValue);
+    //}
+    //else {
+    //    $window.localStorage.removeItem("clubname");
+    //    $window.localStorage.setItem("clubname", myClubValue);
+    //}
 
     $http.get(baseUri + "api/Club/GetClub").then(function (responses) {
         $scope.eClublist = responses.data;
         var getclub = $window.localStorage.getItem("clubname");
-        $scope.myClubValue = getclub;// $window.localStorageService.get("clubname");
+        $scope.myClubValue = getclub;
     });
     $http.get(baseUri + "api/Category/GetCategory").then(function (responses) {
         $scope.eCategorylist = responses.data;
@@ -24,6 +30,7 @@ app.controller('myenroll', function ($scope, $http, $rootScope, $window) {
     });
     $scope.GetChallenges = function () {
         var myparam = "Category/" + $scope.myCategoryValue + '/Club/' + $scope.myClubValue;
+        console.log(myparam);
         $http.get(baseUri + "api/Challenge/GetChallenges/" + myparam).then(function (responses) {
             console.log(responses);
             $scope.eChallengelist = responses.data;
@@ -38,14 +45,13 @@ app.controller('myenroll', function ($scope, $http, $rootScope, $window) {
             $scope.myeChallengeValue = $scope.eChallengelist;
         });
     }
-    $scope.GetSelectin = function ()
-    {
+    $scope.GetSelectin = function () {
         $scope.myeCategoryValue = $scope.myCategoryValue;
         $scope.myeChallengeValue = $scope.myChallengeValue;
     }
 
     $http.get(baseUri + "api/User/GetUsers").then(function (responses) {
-        
+
         $scope.eUserlist = responses.data;
         $scope.myUserValue = $scope.eUserlist[0];
     });
@@ -53,6 +59,8 @@ app.controller('myenroll', function ($scope, $http, $rootScope, $window) {
         console.log("Pritesh");
         $http.get(baseUri + "api/User/GetUsers/Challenge/" + $scope.myeChallengeValue + "/Club/" + $scope.myClubValue).then(function (responses) {
             console.log(baseUri + "api/User/GetUsers/Challenge/" + $scope.myeChallengeValue + "/Club/" + $scope.myClubValue);
+            console.log(responses.data);
+            $scope.UserChalist = [];
             $scope.UserChalist = responses.data;
             $scope.myUserValue = $scope.UserChalist[0];
         });
@@ -62,19 +70,17 @@ app.controller('myenroll', function ($scope, $http, $rootScope, $window) {
         $scope.selectedUserId = idSelected;
         console.log(idSelected);
     }
-
-    $scope.enrollUser = function (myCategoryValue, myChallengeValue, selectedUserId, myClubValue) {
-        //"api/Challenge/GetChallengeClubRelationship/Club/{clubid}/Challenge/{challengeId}")
-         debugger;
+    $scope.GetChallengeClubRelation = function () {
         $http.get(baseUri + "api/Challenge/GetChallengeClubRelationship/Club/" + $scope.myClubValue + "/Challenge/" + $scope.myeChallengeValue).then(function (responses) {
             $scope.challengeClubRelationshipId = responses.data.ChallengeClubRelationId;
-            //$scope.myUserValue = $scope.UserChalist[0];
         });
-
+    }
+    $scope.enrollUser = function (myCategoryValue, myChallengeValue, selectedUserId, myClubValue) {
+        //$scope.GetChallengeClubRelation();
         var data = {
             UserId: selectedUserId.UserId,
             ChallengeId: myChallengeValue,
-            ChallengeClubRelationId :  $scope.challengeClubRelationshipId
+            ChallengeClubRelationId: $scope.challengeClubRelationshipId
         };
         console.log(selectedUserId.UserId);
 
@@ -82,9 +88,6 @@ app.controller('myenroll', function ($scope, $http, $rootScope, $window) {
             if (response.data)
                 $scope.msg = "Post Data Submitted Successfully!";
             alert('User enrollment for challenge is successfull');
-            debugger;
-            $scope.GetUsersNotInChallenge();
-
         }, function (response) {
             $scope.msg = "Service not Exists";
             $scope.statusval = response.status;

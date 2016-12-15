@@ -74,6 +74,26 @@ namespace LifetimeFitness.ChallengeEngine.API.Tests.Controllers
         //}
 
         [TestMethod]
+        public async Task GetChallangesBYClubCategoryId()
+        {
+            try
+            {
+                // Arrange
+                ChallengeProvider _ChallengeProvider = new ChallengeProvider();
+                var testProducts = await _ChallengeProvider.GetChallanges(1,6) as List<Challenge>;
+                int testproduct = testProducts.Count;
+
+                // Assert
+                Assert.IsNotNull(testProducts);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        [TestMethod]
         public void PostChallenge()
         {
             try
