@@ -107,7 +107,7 @@ app.factory('authService', ['$http', '$q', 'localStorageService', function ($htt
 
 
 'use strict';
-app.controller('LoginCtrl', ['$scope', '$location', 'authService', function ($scope, $location, authService) {
+app.controller('LoginCtrl', ['$scope', '$location', 'authService','$window', function ($scope, $location, authService,$window) {
 
     $scope.loginData = {
         userName: "",
@@ -122,11 +122,11 @@ app.controller('LoginCtrl', ['$scope', '$location', 'authService', function ($sc
             if (response.userRole == "Admin" || response.userRole == "Participant") {
                 $("#login").hide();
                 $("#Choose_club").hide();
-                $("Choose_admin").show();
+                $("#Choose_admin").show();
             }
             else { 
                 $("#login").hide();
-                $("Choose_admin").hide();
+                $("#Choose_admin").hide();
                 $("#Choose_club").show();
             }
             
@@ -138,6 +138,12 @@ app.controller('LoginCtrl', ['$scope', '$location', 'authService', function ($sc
          });
     };
 
+    $scope.LoadLoginScreen = function()
+    {
+        authService.logOut();
+        var url = "http://" + $window.location.host + "/index.html";
+        $window.location.href = url;
+    }
 }]);
 
 
