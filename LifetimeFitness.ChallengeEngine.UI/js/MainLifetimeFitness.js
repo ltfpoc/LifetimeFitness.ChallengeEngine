@@ -8,7 +8,6 @@ app.controller('ClubCtrl', function ($scope, $http, $location, $log, $window) {
         method: 'GET',
         url: 'http://localhost:56507/api/Club/GetClub'
     }).success(function (result) {
-        console.log(result);
         $scope.clubslist = result;
     });
     $scope.shareClub = function (myClubValue) {
@@ -22,7 +21,6 @@ app.controller('ClubCtrl', function ($scope, $http, $location, $log, $window) {
         }
         $window.location.href = url;
     };
-    console.log($scope);
 });
 
 
@@ -56,7 +54,6 @@ app.factory('authService', ['$http', '$q', 'localStorageService', function ($htt
     var _login = function (loginData) {
 
         var data = "grant_type=password&username=" + loginData.userName + "&password=" + loginData.password;
-        console.log(data);
         var deferred = $q.defer();
 
         $http.post(serviceBase + 'token', data, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }).success(function (response) {
@@ -133,7 +130,6 @@ app.controller('LoginCtrl', ['$scope', '$location', 'authService','$window', fun
 
         },
          function (err) {
-             console.log(err);
              //$scope.message = err.error_description;
          });
     };
