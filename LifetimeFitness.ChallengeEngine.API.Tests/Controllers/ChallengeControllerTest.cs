@@ -35,6 +35,12 @@ namespace LifetimeFitness.ChallengeEngine.API.Tests.Controllers
                 ObjectContent objContent = response.Content as ObjectContent;
                 List<Challenge> picklistItem = objContent.Value as List<Challenge>;
                 int icount = picklistItem.Count;
+
+                var response1 = await controller.GetChallengesByCategoryClub(1,5) as HttpResponseMessage;
+                ObjectContent objContent1 = response1.Content as ObjectContent;
+                List<Challenge> picklistItem1 = objContent1.Value as List<Challenge>;
+
+                
                 // Assert
                 Assert.IsNotNull(response);
                 Assert.AreEqual(testproduct, icount);
